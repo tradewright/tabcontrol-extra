@@ -14,16 +14,16 @@ namespace System.Windows.Forms
 	[System.ComponentModel.ToolboxItem(false)]
 	public class TabStyleVisualStudioProvider : TabStyleProvider
 	{
-		public TabStyleVisualStudioProvider(CustomTabControl tabControl) : base(tabControl){
-			this._ImageAlign = ContentAlignment.MiddleRight;
-			this._Overlap = 7;
+		public TabStyleVisualStudioProvider(TabControlExtra tabControl) : base(tabControl){
+			this.ImageAlign = ContentAlignment.MiddleRight;
+			this.Overlap = 7;
 			
 			//	Must set after the _Radius as this is used in the calculations of the actual padding
-			this.Padding = new Point(14, 1);
+			this.Padding = new Point(16, 1);
 		}
 		
 		public override void AddTabBorder(System.Drawing.Drawing2D.GraphicsPath path, System.Drawing.Rectangle tabBounds){
-			switch (this._TabControl.Alignment) {
+			switch (this.TabControl.Alignment) {
 				case TabAlignment.Top:
 					path.AddLine(tabBounds.X, tabBounds.Bottom, tabBounds.X + tabBounds.Height - 4, tabBounds.Y + 2);
 					path.AddLine(tabBounds.X + tabBounds.Height, tabBounds.Y, tabBounds.Right - 3, tabBounds.Y);

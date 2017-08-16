@@ -40,23 +40,40 @@ namespace System.Windows.Forms
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
 		public const int WS_EX_NOINHERITLAYOUT = 0x100000;
 
-
 #endregion
 
 #region Content Alignment
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-		public static readonly ContentAlignment AnyRightAlign = ContentAlignment.BottomRight | ContentAlignment.MiddleRight | ContentAlignment.TopRight;
-	    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-		public static readonly ContentAlignment AnyLeftAlign = ContentAlignment.BottomLeft | ContentAlignment.MiddleLeft | ContentAlignment.TopLeft;
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-	    public static readonly ContentAlignment AnyTopAlign = ContentAlignment.TopRight | ContentAlignment.TopCenter | ContentAlignment.TopLeft;
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-	    public static readonly ContentAlignment AnyBottomAlign = ContentAlignment.BottomRight | ContentAlignment.BottomCenter | ContentAlignment.BottomLeft;
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-	    public static readonly ContentAlignment AnyMiddleAlign = ContentAlignment.MiddleRight | ContentAlignment.MiddleCenter | ContentAlignment.MiddleLeft;
-	    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-		public static readonly ContentAlignment AnyCenterAlign = ContentAlignment.BottomCenter | ContentAlignment.MiddleCenter | ContentAlignment.TopCenter;
+		private static readonly ContentAlignment AnyRightAlign = ContentAlignment.BottomRight | ContentAlignment.MiddleRight | ContentAlignment.TopRight;
+        private static readonly ContentAlignment AnyLeftAlign = ContentAlignment.BottomLeft | ContentAlignment.MiddleLeft | ContentAlignment.TopLeft;
+        private static readonly ContentAlignment AnyTopAlign = ContentAlignment.TopRight | ContentAlignment.TopCenter | ContentAlignment.TopLeft;
+        private static readonly ContentAlignment AnyBottomAlign = ContentAlignment.BottomRight | ContentAlignment.BottomCenter | ContentAlignment.BottomLeft;
+        private static readonly ContentAlignment AnyMiddleAlign = ContentAlignment.MiddleRight | ContentAlignment.MiddleCenter | ContentAlignment.MiddleLeft;
+        private static readonly ContentAlignment AnyCenterAlign = ContentAlignment.BottomCenter | ContentAlignment.MiddleCenter | ContentAlignment.TopCenter;
+
+        public static bool IsLeftAligned(ContentAlignment alignment) {
+            return (alignment & NativeMethods.AnyLeftAlign) != ((ContentAlignment)0);
+        }
+
+        public static bool IsRightAligned(ContentAlignment alignment) {
+            return (alignment & NativeMethods.AnyRightAlign) != ((ContentAlignment)0);
+        }
+
+        public static bool IsTopAligned(ContentAlignment alignment) {
+            return (alignment & NativeMethods.AnyTopAlign) != ((ContentAlignment)0);
+        }
+
+        public static bool IsBottomAligned(ContentAlignment alignment) {
+            return (alignment & NativeMethods.AnyBottomAlign) != ((ContentAlignment)0);
+        }
+
+        public static bool IsMiddleAligned(ContentAlignment alignment) {
+            return (alignment & NativeMethods.AnyMiddleAlign) != ((ContentAlignment)0);
+        }
+
+        public static bool IsCenterAligned(ContentAlignment alignment) {
+            return (alignment & NativeMethods.AnyCenterAlign) != ((ContentAlignment)0);
+        }
 
 #endregion
 

@@ -13,14 +13,38 @@ namespace System.Windows.Forms
 	[System.ComponentModel.ToolboxItem(false)]
 	public class TabStyleChromeProvider : TabStyleProvider
 	{
-		public TabStyleChromeProvider(CustomTabControl tabControl) : base(tabControl){
-			this._Overlap = 16;
-			this._Radius = 16;
-			this._ShowTabCloser = true;
-			this._CloserColorActive = Color.White;
+		public TabStyleChromeProvider(TabControlExtra tabControl) : base(tabControl){
+			this.Overlap = 16;
+			//this.Radius = 16;
+			this.ShowTabCloser = true;
+
+            this.CloserColorFocused = Color.Black;
+            this.CloserColorFocusedActive = Color.White;
+            this.CloserColorSelected = Color.Black;
+            this.CloserColorSelectedActive = Color.White;
+            this.CloserColorHighlighted = Color.Black;
+            this.CloserColorHighlightedActive = Color.White;
+            this.CloserColorUnselected = Color.Empty;
+
+            this.CloserButtonFillColorFocused = Color.Empty;
+            this.CloserButtonFillColorFocusedActive = Color.FromArgb(244, 159, 148);
+            this.CloserButtonFillColorSelected = Color.Empty;
+            this.CloserButtonFillColorSelectedActive = Color.FromArgb(244, 159, 148);
+            this.CloserButtonFillColorHighlighted = Color.Empty;
+            this.CloserButtonFillColorHighlightedActive = Color.FromArgb(244, 159, 148);
+            this.CloserButtonFillColorUnselected = Color.Empty;
+
+            this.CloserButtonOutlineColorFocused = Color.Empty;
+            this.CloserButtonOutlineColorFocusedActive = Color.FromArgb(209, 106, 94);
+            this.CloserButtonOutlineColorSelected = Color.Empty;
+            this.CloserButtonOutlineColorSelectedActive = Color.FromArgb(209, 106, 94);
+            this.CloserButtonOutlineColorHighlighted = Color.Empty;
+            this.CloserButtonOutlineColorHighlightedActive = Color.FromArgb(209, 106, 94);
+            this.CloserButtonOutlineColorUnselected = Color.Empty;
+
 			
 			//	Must set after the _Radius as this is used in the calculations of the actual padding
-			this.Padding = new Point(7, 5);
+			this.Padding = new Point(16, 5);
 		}
 		
 		public override void AddTabBorder(System.Drawing.Drawing2D.GraphicsPath path, System.Drawing.Rectangle tabBounds){
@@ -30,7 +54,7 @@ namespace System.Windows.Forms
 			int sixth;
 			int quarter;
 
-			if (this._TabControl.Alignment <= TabAlignment.Bottom){
+			if (this.TabControl.Alignment <= TabAlignment.Bottom){
 				spread = (int)Math.Floor((decimal)tabBounds.Height * 2/3);
 				eigth = (int)Math.Floor((decimal)tabBounds.Height * 1/8);
 				sixth = (int)Math.Floor((decimal)tabBounds.Height * 1/6);
@@ -42,7 +66,7 @@ namespace System.Windows.Forms
 				quarter = (int)Math.Floor((decimal)tabBounds.Width * 1/4);
 			}
 			
-			switch (this._TabControl.Alignment) {
+			switch (this.TabControl.Alignment) {
 				case TabAlignment.Top:
 					
 					path.AddCurve(new Point[] {  new Point(tabBounds.X, tabBounds.Bottom)
@@ -92,36 +116,19 @@ namespace System.Windows.Forms
 			}
 		}
 
-		protected override void DrawTabCloser(int index, Graphics graphics){
-			if (this._ShowTabCloser){
-				Rectangle closerRect = this._TabControl.GetTabCloserRect(index);
-				graphics.SmoothingMode = SmoothingMode.AntiAlias;
-				if (closerRect.Contains(this._TabControl.MousePosition)){
-					using (GraphicsPath closerPath = GetCloserButtonPath(closerRect)){
-						using (SolidBrush closerBrush = new SolidBrush(Color.FromArgb(193, 53, 53))){
-							graphics.FillPath(closerBrush, closerPath);
-						}
-					}
-					using (GraphicsPath closerPath = GetCloserPath(closerRect)){
-						using (Pen closerPen = new Pen(this._CloserColorActive)){
-							graphics.DrawPath(closerPen, closerPath);
-						}
-					}
-				} else {
-					using (GraphicsPath closerPath = GetCloserPath(closerRect)){
-						using (Pen closerPen = new Pen(this._CloserColor)){
-							graphics.DrawPath(closerPen, closerPath);
-						}
-					}
-				}
+        protected internal override GraphicsPath GetTabCloserPath(Rectangle closerRect) {
+            GraphicsPath closerPath = new GraphicsPath();
+            closerPath.AddLine(closerRect.X+4, closerRect.Y+4, closerRect.Right-4, closerRect.Bottom-4);
+            closerPath.CloseFigure();
+            closerPath.AddLine(closerRect.Right-4, closerRect.Y+4, closerRect.X+4, closerRect.Bottom-4);
+            closerPath.CloseFigure();
 
-				
-			}
-		}	
+            return closerPath;
+        }
 
-		private static GraphicsPath GetCloserButtonPath(Rectangle closerRect){
+        protected internal override GraphicsPath GetTabCloserButtonPath(Rectangle closerRect) {
 			GraphicsPath closerPath = new GraphicsPath();
-			closerPath.AddEllipse(new Rectangle(closerRect.X - 2, closerRect.Y - 2, closerRect.Width + 4, closerRect.Height + 4));
+			closerPath.AddEllipse(new Rectangle(closerRect.X, closerRect.Y, closerRect.Width, closerRect.Height));
 			closerPath.CloseFigure();
 			return closerPath;
 		}
