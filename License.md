@@ -145,9 +145,9 @@ VIRUSES. YOU MUST PASS THIS DISCLAIMER ON WHENEVER YOU DISTRIBUTE THE WORK OR DE
 WORKS.
 	
 	
-7. **Indemnity. **You agree to defend, indemnify and hold harmless the Author and
+7. **Indemnity.** You agree to defend, indemnify and hold harmless the Author and
 the Publisher from and against any claims, suits, losses, damages, liabilities,
-costs, and expenses (including reasonable legal or attorneys’ fees) resulting from
+costs, and expenses (including reasonable legal or attorneys' fees) resulting from
 or relating to any use of the Work by You.
 	
 	
