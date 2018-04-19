@@ -3,13 +3,14 @@
  * See http://www.codeproject.com/info/cpol10.aspx for details
 */
 
+using System;
 using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace TradeWright.UI.TabControlExtra 
 {
 	/// <summary>
 	/// Description of NativeMethods.

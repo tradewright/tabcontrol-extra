@@ -3,7 +3,7 @@
  * See http://www.codeproject.com/info/cpol10.aspx for details
  */
 
-namespace System.Windows.Forms
+namespace TradeWright.UI.TabControlExtra 
 {
 	using System;
 	using System.Drawing;

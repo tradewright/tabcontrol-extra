@@ -10,8 +10,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Security.Permissions;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms {
+namespace TradeWright.UI.TabControlExtra {
 
     [ToolboxBitmapAttribute(typeof(TabControl))]
     public class TabControlExtra : TabControl {
@@ -1208,9 +1209,9 @@ namespace System.Windows.Forms {
 
         private bool EffectiveRightToLeft {
             get {
-                return ((this.RightToLeft == Forms.RightToLeft.Yes) ||
-                            (this.RightToLeft == Forms.RightToLeft.Inherit &&
-                                this.Parent.RightToLeft == Forms.RightToLeft.Yes))
+                return ((this.RightToLeft == RightToLeft.Yes) ||
+                            (this.RightToLeft == RightToLeft.Inherit &&
+                                this.Parent.RightToLeft == RightToLeft.Yes))
                         && this.RightToLeftLayout;
             }
         }

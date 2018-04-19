@@ -11,11 +11,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TabControlExtra")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Replacement for the Microsoft .Net TabControl with advanced features")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("JacksonSoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TabControlExtra")]
-[assembly: AssemblyCopyright("Copyright Mark Jackson 2010; Richard King 2017")]
+[assembly: AssemblyCopyright("Copyright Mark Jackson 2010; Richard L King 2017-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en-GB")]
@@ -31,6 +31,7 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: Guid("8C5AD640-CEDA-49F7-A709-610779ADB760")]
 

@@ -5,7 +5,7 @@
 
 using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace TradeWright.UI.TabControlExtra 
 {
 	public enum TabStyle{
 		None = 0,

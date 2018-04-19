@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace TradeWright.UI.TabControlExtra 
 {
 
 	[System.ComponentModel.ToolboxItem(false)]
