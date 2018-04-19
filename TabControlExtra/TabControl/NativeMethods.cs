@@ -34,41 +34,6 @@ namespace TradeWright.UI.TabControlExtra
 
 #endregion
 
-#region Content Alignment
-
-		private static readonly ContentAlignment AnyRightAlign = ContentAlignment.BottomRight | ContentAlignment.MiddleRight | ContentAlignment.TopRight;
-        private static readonly ContentAlignment AnyLeftAlign = ContentAlignment.BottomLeft | ContentAlignment.MiddleLeft | ContentAlignment.TopLeft;
-        private static readonly ContentAlignment AnyTopAlign = ContentAlignment.TopRight | ContentAlignment.TopCenter | ContentAlignment.TopLeft;
-        private static readonly ContentAlignment AnyBottomAlign = ContentAlignment.BottomRight | ContentAlignment.BottomCenter | ContentAlignment.BottomLeft;
-        private static readonly ContentAlignment AnyMiddleAlign = ContentAlignment.MiddleRight | ContentAlignment.MiddleCenter | ContentAlignment.MiddleLeft;
-        private static readonly ContentAlignment AnyCenterAlign = ContentAlignment.BottomCenter | ContentAlignment.MiddleCenter | ContentAlignment.TopCenter;
-
-        public static bool IsLeftAligned(ContentAlignment alignment) {
-            return (alignment & NativeMethods.AnyLeftAlign) != ((ContentAlignment)0);
-        }
-
-        public static bool IsRightAligned(ContentAlignment alignment) {
-            return (alignment & NativeMethods.AnyRightAlign) != ((ContentAlignment)0);
-        }
-
-        public static bool IsTopAligned(ContentAlignment alignment) {
-            return (alignment & NativeMethods.AnyTopAlign) != ((ContentAlignment)0);
-        }
-
-        public static bool IsBottomAligned(ContentAlignment alignment) {
-            return (alignment & NativeMethods.AnyBottomAlign) != ((ContentAlignment)0);
-        }
-
-        public static bool IsMiddleAligned(ContentAlignment alignment) {
-            return (alignment & NativeMethods.AnyMiddleAlign) != ((ContentAlignment)0);
-        }
-
-        public static bool IsCenterAligned(ContentAlignment alignment) {
-            return (alignment & NativeMethods.AnyCenterAlign) != ((ContentAlignment)0);
-        }
-
-#endregion
-
 #region User32.dll
 
 //        [DllImport("user32.dll"), SecurityPermission(SecurityAction.Demand)]

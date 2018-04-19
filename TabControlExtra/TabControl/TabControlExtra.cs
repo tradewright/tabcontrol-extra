@@ -21,6 +21,13 @@ namespace TradeWright.UI.TabControlExtra {
 
         public const int TabCloserButtonSize = 15;
 
+        private const int AnyRightAlign = (int)ContentAlignment.BottomRight | (int)ContentAlignment.MiddleRight | (int)ContentAlignment.TopRight;
+        private const int AnyLeftAlign = (int)ContentAlignment.BottomLeft | (int)ContentAlignment.MiddleLeft | (int)ContentAlignment.TopLeft;
+        private const int AnyTopAlign = (int)ContentAlignment.TopRight | (int)ContentAlignment.TopCenter | (int)ContentAlignment.TopLeft;
+        private const int AnyBottomAlign = (int)ContentAlignment.BottomRight | (int)ContentAlignment.BottomCenter | (int)ContentAlignment.BottomLeft;
+        private const int AnyMiddleAlign = (int)ContentAlignment.MiddleRight | (int)ContentAlignment.MiddleCenter | (int)ContentAlignment.MiddleLeft;
+        private const int AnyCenterAlign = (int)ContentAlignment.BottomCenter | (int)ContentAlignment.MiddleCenter | (int)ContentAlignment.TopCenter;
+
         #endregion
 
         #region	Construction
@@ -1336,19 +1343,19 @@ namespace TradeWright.UI.TabControlExtra {
 
             var imageAlignment = this._StyleProvider.ImageAlign;
             bool horizontalTabs = (this.Alignment == TabAlignment.Top || this.Alignment == TabAlignment.Bottom);
-            bool adjustPosition = (horizontalTabs && (NativeMethods.IsLeftAligned(imageAlignment) || NativeMethods.IsRightAligned(imageAlignment)))
-                                || (!horizontalTabs && (NativeMethods.IsBottomAligned(imageAlignment) || NativeMethods.IsTopAligned(imageAlignment)));
-            bool increaseCoordinate = (horizontalTabs && NativeMethods.IsLeftAligned(imageAlignment)) || (!horizontalTabs && NativeMethods.IsTopAligned(imageAlignment));
+            bool adjustPosition = (horizontalTabs && (IsLeftAligned(imageAlignment) || IsRightAligned(imageAlignment)))
+                                || (!horizontalTabs && (IsBottomAligned(imageAlignment) || IsTopAligned(imageAlignment)));
+            bool increaseCoordinate = (horizontalTabs && IsLeftAligned(imageAlignment)) || (!horizontalTabs && IsTopAligned(imageAlignment));
             
             if (adjustPosition) imageRect = EnsureRectIsInPath(tabBorderPath, imageRect, increaseCoordinate);
 
             if (this._StyleProvider.ShowTabCloser) {
                 if (this.EffectiveRightToLeft) {
-                    if (horizontalTabs && NativeMethods.IsLeftAligned(imageAlignment)) imageRect.X += TabControlExtra.TabCloserButtonSize + 4;
-                    if (!horizontalTabs && NativeMethods.IsTopAligned(imageAlignment)) imageRect.Y += TabControlExtra.TabCloserButtonSize + 4;
+                    if (horizontalTabs && IsLeftAligned(imageAlignment)) imageRect.X += TabControlExtra.TabCloserButtonSize + 4;
+                    if (!horizontalTabs && IsTopAligned(imageAlignment)) imageRect.Y += TabControlExtra.TabCloserButtonSize + 4;
                 } else {
-                    if (horizontalTabs && NativeMethods.IsRightAligned(imageAlignment)) imageRect.X -= TabControlExtra.TabCloserButtonSize + 4;
-                    if (!horizontalTabs && NativeMethods.IsBottomAligned(imageAlignment)) imageRect.Y -= TabControlExtra.TabCloserButtonSize + 4;
+                    if (horizontalTabs && IsRightAligned(imageAlignment)) imageRect.X -= TabControlExtra.TabCloserButtonSize + 4;
+                    if (!horizontalTabs && IsBottomAligned(imageAlignment)) imageRect.Y -= TabControlExtra.TabCloserButtonSize + 4;
                 }
             }
 
@@ -1462,9 +1469,9 @@ namespace TradeWright.UI.TabControlExtra {
                     }
                 }
                 if (imageRect != Rectangle.Empty) {
-                    if (NativeMethods.IsLeftAligned(imageAlignment)) {
+                    if (IsLeftAligned(imageAlignment)) {
                         left = imageRect.Right + 4;
-                    } else if (NativeMethods.IsRightAligned(imageAlignment)) {
+                    } else if (IsRightAligned(imageAlignment)) {
                         right = imageRect.X - 4;
                     }
                 }
@@ -1479,9 +1486,9 @@ namespace TradeWright.UI.TabControlExtra {
                     }
                 }
                 if (imageRect != Rectangle.Empty) {
-                    if (NativeMethods.IsTopAligned(imageAlignment)) {
+                    if (IsTopAligned(imageAlignment)) {
                         top = imageRect.Bottom + 4;
-                    } else if (NativeMethods.IsBottomAligned(imageAlignment)) {
+                    } else if (IsBottomAligned(imageAlignment)) {
                         bottom = imageRect.Y - 4;
                     }
                 }
@@ -1515,6 +1522,34 @@ namespace TradeWright.UI.TabControlExtra {
             return this.ImageList != null &&
                     (this.TabPages[index].ImageIndex > -1 ||
                     (!string.IsNullOrEmpty(this.TabPages[index].ImageKey) && !this.TabPages[index].ImageKey.Equals("(none)", StringComparison.OrdinalIgnoreCase)));
+        }
+
+        #endregion
+
+        #region Alignment predicates
+
+        public static bool IsLeftAligned(ContentAlignment alignment) {
+            return ((int)alignment & AnyLeftAlign) != 0;
+        }
+
+        public static bool IsRightAligned(ContentAlignment alignment) {
+            return ((int)alignment & AnyRightAlign) != 0;
+        }
+
+        public static bool IsTopAligned(ContentAlignment alignment) {
+            return ((int)alignment & AnyTopAlign) != 0;
+        }
+
+        public static bool IsBottomAligned(ContentAlignment alignment) {
+            return ((int)alignment & AnyBottomAlign) != 0;
+        }
+
+        public static bool IsMiddleAligned(ContentAlignment alignment) {
+            return ((int)alignment & AnyMiddleAlign) != 0;
+        }
+
+        public static bool IsCenterAligned(ContentAlignment alignment) {
+            return ((int)alignment & AnyCenterAlign) != 0;
         }
 
         #endregion
