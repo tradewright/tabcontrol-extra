@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace TradeWright.UI.TabControlExtra 
+namespace TradeWright.UI.Forms 
 {
     [System.ComponentModel.ToolboxItem(false)]
 	public abstract class TabStyleProvider : Component
@@ -343,7 +343,7 @@ namespace TradeWright.UI.TabControlExtra
 		public int Radius {
 			get { return this._Radius; }
 			set {
-				if (value < 1) throw new ArgumentException("The radius cannot be less than 1", "value");
+				if (value < 1) throw new ArgumentException("The radius cannot be less than 1", nameof(value));
 				
 				this._Radius = value;
 				//	Adjust padding
@@ -356,7 +356,7 @@ namespace TradeWright.UI.TabControlExtra
 			get { return this._Overlap; }
 			set {
 				if (value < 0){
-					throw new ArgumentException("The tabs cannot have a negative overlap", "value");
+					throw new ArgumentException("The tabs cannot have a negative overlap", nameof(value));
 				}
 				this._Overlap = value;
 			}
@@ -404,10 +404,10 @@ namespace TradeWright.UI.TabControlExtra
 			get { return this._Opacity; }
 			set {
 				if (value < 0){
-					throw new ArgumentException("The opacity must be between 0 and 1", "value");
+					throw new ArgumentException("The opacity must be between 0 and 1", nameof(value));
 				}
 				if (value > 1){
-					throw new ArgumentException("The opacity must be between 0 and 1", "value");
+					throw new ArgumentException("The opacity must be between 0 and 1", nameof(value));
 				}
 				this._Opacity = value;
 			}
@@ -1245,8 +1245,8 @@ namespace TradeWright.UI.TabControlExtra
         }
 
         protected virtual Blend GetBackgroundBlend() {
-            float[] relativeIntensities = new float[] { 0f, 0.7f, 1f };
-            float[] relativePositions = new float[] { 0f, 0.6f, 1f };
+            float[] relativeIntensities = { 0f, 0.7f, 1f };
+            float[] relativePositions = { 0f, 0.6f, 1f };
 
             //	Glass look to top aligned tabs
             if (this.BlendStyle == BlendStyle.Glass) {

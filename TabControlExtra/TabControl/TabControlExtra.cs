@@ -12,7 +12,7 @@ using System.Drawing.Imaging;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace TradeWright.UI.TabControlExtra {
+namespace TradeWright.UI.Forms {
 
     [ToolboxBitmapAttribute(typeof(TabControl))]
     public class TabControlExtra : TabControl {
@@ -218,7 +218,9 @@ namespace TradeWright.UI.TabControlExtra {
             get {
                 return base.Appearance;
             }
+#pragma warning disable RECS0029 // Warns about property or indexer setters and event adders or removers that do not use the value parameter
             set {
+#pragma warning restore RECS0029 // Warns about property or indexer setters and event adders or removers that do not use the value parameter
                 //	Don't permit setting to other appearances as we are doing all the painting
                 base.Appearance = TabAppearance.Normal;
             }

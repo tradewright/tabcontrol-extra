@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace TradeWright.UI.TabControlExtra 
+namespace TradeWright.UI.Forms 
 {
 	/// <summary>
 	/// Description of NativeMethods.
@@ -60,7 +60,7 @@ namespace TradeWright.UI.TabControlExtra
 			                                                | BindingFlags.IgnoreCase 
 			                                                | BindingFlags.Instance);
 			
-			object[] args = new object[] {message};
+			object[] args = {message};
 			wproc.Invoke(control, args);
 			
 			return ((Message)args[0]).Result;

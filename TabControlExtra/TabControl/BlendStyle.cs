@@ -5,7 +5,7 @@
 
 using System.Windows.Forms;
 
-namespace TradeWright.UI.TabControlExtra {
+namespace TradeWright.UI.Forms {
     public enum BlendStyle {
         Normal = 0,
         Glass = 1
