@@ -13,13 +13,13 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("TabControlExtra")]
 [assembly: AssemblyDescription("Replacement for the Microsoft .Net TabControl with advanced features")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Richard L King, TradeWright Software Systems")]
 [assembly: AssemblyProduct("TabControlExtra")]
-[assembly: AssemblyCopyright("Copyright Mark Jackson 2010; Richard L King 2017-2018")]
+[assembly: AssemblyCopyright("Copyright © Mark Jackson 2010; Richard L King 2012-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en-GB")]
-[assembly: CLSCompliant(false)]
+[assembly: CLSCompliant(true)]
 
 // This sets the default COM visibility of types in the assembly to invisible.
 // If you need to expose a type to COM, use [ComVisible(true)] on that type.
@@ -29,9 +29,9 @@ using System.Runtime.InteropServices;
 //
 // Major.Minor.Build.Revision
 //
-// You can specify all the values or you can use the default the Revision and 
+// You can specify all the values or you can default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.0.*")]
+//[assembly: AssemblyFileVersion("2.0.0.0")]
 [assembly: Guid("8C5AD640-CEDA-49F7-A709-610779ADB760")]
 
