@@ -116,19 +116,19 @@ namespace TradeWright.UI.Forms
 			}
 		}
 
-        protected internal override GraphicsPath GetTabCloserPath(Rectangle closerRect) {
+        protected internal override GraphicsPath GetTabCloserPath(Rectangle closerButtonRect) {
             GraphicsPath closerPath = new GraphicsPath();
-            closerPath.AddLine(closerRect.X+4, closerRect.Y+4, closerRect.Right-4, closerRect.Bottom-4);
+            closerPath.AddLine(closerButtonRect.X+4, closerButtonRect.Y+4, closerButtonRect.Right-4, closerButtonRect.Bottom-4);
             closerPath.CloseFigure();
-            closerPath.AddLine(closerRect.Right-4, closerRect.Y+4, closerRect.X+4, closerRect.Bottom-4);
+            closerPath.AddLine(closerButtonRect.Right-4, closerButtonRect.Y+4, closerButtonRect.X+4, closerButtonRect.Bottom-4);
             closerPath.CloseFigure();
 
             return closerPath;
         }
 
-        protected internal override GraphicsPath GetTabCloserButtonPath(Rectangle closerRect) {
+        protected internal override GraphicsPath GetTabCloserButtonPath(Rectangle closerButtonRect) {
 			GraphicsPath closerPath = new GraphicsPath();
-			closerPath.AddEllipse(new Rectangle(closerRect.X, closerRect.Y, closerRect.Width, closerRect.Height));
+			closerPath.AddEllipse(new Rectangle(closerButtonRect.X, closerButtonRect.Y, closerButtonRect.Width, closerButtonRect.Height));
 			closerPath.CloseFigure();
 			return closerPath;
 		}
