@@ -10,10 +10,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TabControlExtra")]
+[assembly: AssemblyTitle("TradeWright.TabControlExtra")]
 [assembly: AssemblyDescription("Replacement for the Microsoft .Net TabControl with advanced features")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Richard L King, TradeWright Software Systems")]
+[assembly: AssemblyCompany("Richard L King (TradeWright Software Systems)")]
 [assembly: AssemblyProduct("TabControlExtra")]
 [assembly: AssemblyCopyright("Copyright © Mark Jackson 2010; Richard L King 2012-2018")]
 [assembly: AssemblyTrademark("")]
@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.*")]
+[assembly: AssemblyVersion("2.0.0")]
 //[assembly: AssemblyFileVersion("2.0.0.0")]
 [assembly: Guid("8C5AD640-CEDA-49F7-A709-610779ADB760")]
 
