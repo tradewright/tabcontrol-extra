@@ -14,6 +14,5 @@ namespace CSCustomTabControlDemo
 		public MainForm() {
 			InitializeComponent();
 		}
-		
-	}
+    }
 }
