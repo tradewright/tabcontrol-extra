@@ -16,7 +16,8 @@ namespace TradeWright.UI.Forms
 		Chrome = 5,
 		IE8 = 6,
 		VS2010 = 7, 
-        Rectangular = 8
+        Rectangular = 8,
+        VS2012 = 9
 	}
 
 }

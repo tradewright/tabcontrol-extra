@@ -78,7 +78,11 @@ namespace TradeWright.UI.Forms
                     provider = new TabStyleRectangularProvider(tabControl);
                     break;
 
-				default:
+                case TabStyle.VS2012:
+                    provider = new TabStyleVS2012Provider(tabControl);
+                    break;
+
+            default:
 					provider = new TabStyleDefaultProvider(tabControl);
 					break;
 			}
