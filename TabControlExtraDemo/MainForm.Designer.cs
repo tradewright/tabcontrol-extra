@@ -41,7 +41,27 @@ namespace CSCustomTabControlDemo
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControlExtra7 = new TradeWright.UI.Forms.TabControlExtra();
+            this.tabPage32 = new System.Windows.Forms.TabPage();
+            this.tabPage33 = new System.Windows.Forms.TabPage();
+            this.tabPage34 = new System.Windows.Forms.TabPage();
+            this.tabPage35 = new System.Windows.Forms.TabPage();
+            this.tabPage31 = new System.Windows.Forms.TabPage();
+            this.tabPage45 = new System.Windows.Forms.TabPage();
+            this.tabPage46 = new System.Windows.Forms.TabPage();
+            this.tabPage47 = new System.Windows.Forms.TabPage();
+            this.tabPage48 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tabControlExtra9 = new TradeWright.UI.Forms.TabControlExtra();
+            this.tabPage69 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tabPage70 = new System.Windows.Forms.TabPage();
+            this.tabPage71 = new System.Windows.Forms.TabPage();
+            this.tabPage72 = new System.Windows.Forms.TabPage();
+            this.tabPage73 = new System.Windows.Forms.TabPage();
+            this.tabPage74 = new System.Windows.Forms.TabPage();
+            this.tabPage75 = new System.Windows.Forms.TabPage();
+            this.tabPage76 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControlExtra10 = new TradeWright.UI.Forms.TabControlExtra();
             this.tabPage77 = new System.Windows.Forms.TabPage();
@@ -53,16 +73,6 @@ namespace CSCustomTabControlDemo
             this.tabPage83 = new System.Windows.Forms.TabPage();
             this.tabPage84 = new System.Windows.Forms.TabPage();
             this.tabPage85 = new System.Windows.Forms.TabPage();
-            this.tabControlExtra9 = new TradeWright.UI.Forms.TabControlExtra();
-            this.tabPage69 = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tabPage70 = new System.Windows.Forms.TabPage();
-            this.tabPage71 = new System.Windows.Forms.TabPage();
-            this.tabPage72 = new System.Windows.Forms.TabPage();
-            this.tabPage73 = new System.Windows.Forms.TabPage();
-            this.tabPage74 = new System.Windows.Forms.TabPage();
-            this.tabPage75 = new System.Windows.Forms.TabPage();
-            this.tabPage76 = new System.Windows.Forms.TabPage();
             this.tabControlExtra8 = new TradeWright.UI.Forms.TabControlExtra();
             this.tabPage36 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -74,16 +84,6 @@ namespace CSCustomTabControlDemo
             this.tabPage42 = new System.Windows.Forms.TabPage();
             this.tabPage43 = new System.Windows.Forms.TabPage();
             this.tabPage44 = new System.Windows.Forms.TabPage();
-            this.tabControlExtra7 = new TradeWright.UI.Forms.TabControlExtra();
-            this.tabPage32 = new System.Windows.Forms.TabPage();
-            this.tabPage33 = new System.Windows.Forms.TabPage();
-            this.tabPage34 = new System.Windows.Forms.TabPage();
-            this.tabPage35 = new System.Windows.Forms.TabPage();
-            this.tabPage31 = new System.Windows.Forms.TabPage();
-            this.tabPage45 = new System.Windows.Forms.TabPage();
-            this.tabPage46 = new System.Windows.Forms.TabPage();
-            this.tabPage47 = new System.Windows.Forms.TabPage();
-            this.tabPage48 = new System.Windows.Forms.TabPage();
             this.tabControlExtra2 = new TradeWright.UI.Forms.TabControlExtra();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
@@ -143,16 +143,16 @@ namespace CSCustomTabControlDemo
             this.tabPage58 = new System.Windows.Forms.TabPage();
             this.tabPage59 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
+            this.tabControlExtra7.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.tabControlExtra10.SuspendLayout();
             this.tabControlExtra9.SuspendLayout();
             this.tabPage69.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.tabControlExtra10.SuspendLayout();
             this.tabControlExtra8.SuspendLayout();
             this.tabPage36.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabControlExtra7.SuspendLayout();
             this.tabControlExtra2.SuspendLayout();
             this.tabControlExtra1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -188,6 +188,183 @@ namespace CSCustomTabControlDemo
             this.panel1.Size = new System.Drawing.Size(523, 88);
             this.panel1.TabIndex = 8;
             // 
+            // tabControlExtra7
+            // 
+            this.tabControlExtra7.AllowDrop = true;
+            this.tabControlExtra7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlExtra7.Controls.Add(this.tabPage32);
+            this.tabControlExtra7.Controls.Add(this.tabPage33);
+            this.tabControlExtra7.Controls.Add(this.tabPage34);
+            this.tabControlExtra7.Controls.Add(this.tabPage35);
+            this.tabControlExtra7.Controls.Add(this.tabPage31);
+            this.tabControlExtra7.Controls.Add(this.tabPage45);
+            this.tabControlExtra7.Controls.Add(this.tabPage46);
+            this.tabControlExtra7.Controls.Add(this.tabPage47);
+            this.tabControlExtra7.Controls.Add(this.tabPage48);
+            this.tabControlExtra7.DisplayStyle = TradeWright.UI.Forms.TabStyle.VS2010;
+            // 
+            // 
+            // 
+            this.tabControlExtra7.DisplayStyleProvider.BlendStyle = TradeWright.UI.Forms.BlendStyle.Normal;
+            this.tabControlExtra7.DisplayStyleProvider.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.tabControlExtra7.DisplayStyleProvider.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(243)))), ((int)(((byte)(205)))));
+            this.tabControlExtra7.DisplayStyleProvider.BorderColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(167)))), ((int)(((byte)(183)))));
+            this.tabControlExtra7.DisplayStyleProvider.BorderColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
+            this.tabControlExtra7.DisplayStyleProvider.BorderColorUnselected = System.Drawing.Color.Transparent;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorFocused = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorFocusedActive = System.Drawing.Color.White;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorHighlighted = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorHighlightedActive = System.Drawing.Color.White;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorSelected = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorSelectedActive = System.Drawing.Color.White;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorUnselected = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorFocused = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorFocusedActive = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorHighlighted = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorHighlightedActive = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorSelected = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
+            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorUnselected = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.CloserColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(99)))), ((int)(((byte)(61)))));
+            this.tabControlExtra7.DisplayStyleProvider.CloserColorFocusedActive = System.Drawing.Color.Black;
+            this.tabControlExtra7.DisplayStyleProvider.CloserColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(221)))));
+            this.tabControlExtra7.DisplayStyleProvider.CloserColorHighlightedActive = System.Drawing.Color.Black;
+            this.tabControlExtra7.DisplayStyleProvider.CloserColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(102)))), ((int)(((byte)(115)))));
+            this.tabControlExtra7.DisplayStyleProvider.CloserColorSelectedActive = System.Drawing.Color.Black;
+            this.tabControlExtra7.DisplayStyleProvider.CloserColorUnselected = System.Drawing.Color.Empty;
+            this.tabControlExtra7.DisplayStyleProvider.FocusTrack = false;
+            this.tabControlExtra7.DisplayStyleProvider.HotTrack = true;
+            this.tabControlExtra7.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabControlExtra7.DisplayStyleProvider.Opacity = 1F;
+            this.tabControlExtra7.DisplayStyleProvider.Overlap = 0;
+            this.tabControlExtra7.DisplayStyleProvider.Padding = new System.Drawing.Point(6, 5);
+            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
+            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(92)))), ((int)(((byte)(116)))));
+            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
+            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorUnselected = System.Drawing.Color.Transparent;
+            this.tabControlExtra7.DisplayStyleProvider.Radius = 3;
+            this.tabControlExtra7.DisplayStyleProvider.SelectedTabIsLarger = false;
+            this.tabControlExtra7.DisplayStyleProvider.ShowTabCloser = true;
+            this.tabControlExtra7.DisplayStyleProvider.TabColorDisabled1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.tabControlExtra7.DisplayStyleProvider.TabColorDisabled2 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
+            this.tabControlExtra7.DisplayStyleProvider.TabColorFocused1 = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
+            this.tabControlExtra7.DisplayStyleProvider.TabColorFocused2 = System.Drawing.SystemColors.Window;
+            this.tabControlExtra7.DisplayStyleProvider.TabColorHighLighted1 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(92)))), ((int)(((byte)(116)))));
+            this.tabControlExtra7.DisplayStyleProvider.TabColorHighLighted2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(92)))), ((int)(((byte)(116)))));
+            this.tabControlExtra7.DisplayStyleProvider.TabColorSelected1 = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
+            this.tabControlExtra7.DisplayStyleProvider.TabColorSelected2 = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
+            this.tabControlExtra7.DisplayStyleProvider.TabColorUnSelected1 = System.Drawing.Color.Transparent;
+            this.tabControlExtra7.DisplayStyleProvider.TabColorUnSelected2 = System.Drawing.Color.Transparent;
+            this.tabControlExtra7.DisplayStyleProvider.TabPageMargin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.tabControlExtra7.DisplayStyleProvider.TabPageRadius = 2;
+            this.tabControlExtra7.DisplayStyleProvider.TextColorDisabled = System.Drawing.Color.WhiteSmoke;
+            this.tabControlExtra7.DisplayStyleProvider.TextColorFocused = System.Drawing.SystemColors.ControlText;
+            this.tabControlExtra7.DisplayStyleProvider.TextColorHighlighted = System.Drawing.Color.White;
+            this.tabControlExtra7.DisplayStyleProvider.TextColorSelected = System.Drawing.SystemColors.ControlText;
+            this.tabControlExtra7.DisplayStyleProvider.TextColorUnselected = System.Drawing.Color.White;
+            this.tabControlExtra7.HotTrack = true;
+            this.tabControlExtra7.ImageList = this.imageList1;
+            this.tabControlExtra7.Location = new System.Drawing.Point(12, 4);
+            this.tabControlExtra7.Name = "tabControlExtra7";
+            this.tabControlExtra7.SelectedIndex = 0;
+            this.tabControlExtra7.Size = new System.Drawing.Size(493, 74);
+            this.tabControlExtra7.TabIndex = 7;
+            // 
+            // tabPage32
+            // 
+            this.tabPage32.ImageKey = "book_open.png";
+            this.tabPage32.Location = new System.Drawing.Point(4, 30);
+            this.tabPage32.Name = "tabPage32";
+            this.tabPage32.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage32.Size = new System.Drawing.Size(485, 40);
+            this.tabPage32.TabIndex = 1;
+            this.tabPage32.Text = "tabPage32";
+            this.tabPage32.UseVisualStyleBackColor = true;
+            // 
+            // tabPage33
+            // 
+            this.tabPage33.ImageKey = "brush3.png";
+            this.tabPage33.Location = new System.Drawing.Point(4, 30);
+            this.tabPage33.Name = "tabPage33";
+            this.tabPage33.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage33.Size = new System.Drawing.Size(485, 40);
+            this.tabPage33.TabIndex = 2;
+            this.tabPage33.Text = "tabPage33";
+            this.tabPage33.UseVisualStyleBackColor = true;
+            // 
+            // tabPage34
+            // 
+            this.tabPage34.ImageKey = "(none)";
+            this.tabPage34.Location = new System.Drawing.Point(4, 30);
+            this.tabPage34.Name = "tabPage34";
+            this.tabPage34.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage34.Size = new System.Drawing.Size(485, 40);
+            this.tabPage34.TabIndex = 3;
+            this.tabPage34.Text = "tabPage34";
+            this.tabPage34.UseVisualStyleBackColor = true;
+            // 
+            // tabPage35
+            // 
+            this.tabPage35.ImageKey = "(none)";
+            this.tabPage35.Location = new System.Drawing.Point(4, 30);
+            this.tabPage35.Name = "tabPage35";
+            this.tabPage35.Size = new System.Drawing.Size(485, 40);
+            this.tabPage35.TabIndex = 4;
+            this.tabPage35.Text = "tabPage35";
+            this.tabPage35.UseVisualStyleBackColor = true;
+            // 
+            // tabPage31
+            // 
+            this.tabPage31.Location = new System.Drawing.Point(4, 30);
+            this.tabPage31.Name = "tabPage31";
+            this.tabPage31.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage31.Size = new System.Drawing.Size(485, 40);
+            this.tabPage31.TabIndex = 5;
+            this.tabPage31.Text = "tabPage31";
+            this.tabPage31.UseVisualStyleBackColor = true;
+            // 
+            // tabPage45
+            // 
+            this.tabPage45.Location = new System.Drawing.Point(4, 30);
+            this.tabPage45.Name = "tabPage45";
+            this.tabPage45.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage45.Size = new System.Drawing.Size(485, 40);
+            this.tabPage45.TabIndex = 6;
+            this.tabPage45.Text = "tabPage45";
+            this.tabPage45.UseVisualStyleBackColor = true;
+            // 
+            // tabPage46
+            // 
+            this.tabPage46.Location = new System.Drawing.Point(4, 30);
+            this.tabPage46.Name = "tabPage46";
+            this.tabPage46.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage46.Size = new System.Drawing.Size(485, 40);
+            this.tabPage46.TabIndex = 7;
+            this.tabPage46.Text = "tabPage46";
+            this.tabPage46.UseVisualStyleBackColor = true;
+            // 
+            // tabPage47
+            // 
+            this.tabPage47.Location = new System.Drawing.Point(4, 30);
+            this.tabPage47.Name = "tabPage47";
+            this.tabPage47.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage47.Size = new System.Drawing.Size(485, 40);
+            this.tabPage47.TabIndex = 8;
+            this.tabPage47.Text = "tabPage47";
+            this.tabPage47.UseVisualStyleBackColor = true;
+            // 
+            // tabPage48
+            // 
+            this.tabPage48.Location = new System.Drawing.Point(4, 30);
+            this.tabPage48.Name = "tabPage48";
+            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage48.Size = new System.Drawing.Size(485, 40);
+            this.tabPage48.TabIndex = 9;
+            this.tabPage48.Text = "tabPage48";
+            this.tabPage48.UseVisualStyleBackColor = true;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
@@ -196,6 +373,178 @@ namespace CSCustomTabControlDemo
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(195, 402);
             this.panel2.TabIndex = 11;
+            // 
+            // tabControlExtra9
+            // 
+            this.tabControlExtra9.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControlExtra9.Controls.Add(this.tabPage69);
+            this.tabControlExtra9.Controls.Add(this.tabPage70);
+            this.tabControlExtra9.Controls.Add(this.tabPage71);
+            this.tabControlExtra9.Controls.Add(this.tabPage72);
+            this.tabControlExtra9.Controls.Add(this.tabPage73);
+            this.tabControlExtra9.Controls.Add(this.tabPage74);
+            this.tabControlExtra9.Controls.Add(this.tabPage75);
+            this.tabControlExtra9.Controls.Add(this.tabPage76);
+            this.tabControlExtra9.DisplayStyle = TradeWright.UI.Forms.TabStyle.Rectangular;
+            // 
+            // 
+            // 
+            this.tabControlExtra9.DisplayStyleProvider.BlendStyle = TradeWright.UI.Forms.BlendStyle.Normal;
+            this.tabControlExtra9.DisplayStyleProvider.BorderColorDisabled = System.Drawing.SystemColors.Control;
+            this.tabControlExtra9.DisplayStyleProvider.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.tabControlExtra9.DisplayStyleProvider.BorderColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            this.tabControlExtra9.DisplayStyleProvider.BorderColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
+            this.tabControlExtra9.DisplayStyleProvider.BorderColorUnselected = System.Drawing.Color.Transparent;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorFocused = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorFocusedActive = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorHighlighted = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorHighlightedActive = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(176)))), ((int)(((byte)(239)))));
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorSelected = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorUnselected = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorFocused = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorFocusedActive = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorHighlighted = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorHighlightedActive = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorSelected = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorSelectedActive = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorUnselected = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.CloserColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.tabControlExtra9.DisplayStyleProvider.CloserColorFocusedActive = System.Drawing.Color.White;
+            this.tabControlExtra9.DisplayStyleProvider.CloserColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(195)))), ((int)(((byte)(241)))));
+            this.tabControlExtra9.DisplayStyleProvider.CloserColorHighlightedActive = System.Drawing.Color.White;
+            this.tabControlExtra9.DisplayStyleProvider.CloserColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(112)))));
+            this.tabControlExtra9.DisplayStyleProvider.CloserColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.tabControlExtra9.DisplayStyleProvider.CloserColorUnselected = System.Drawing.Color.Empty;
+            this.tabControlExtra9.DisplayStyleProvider.FocusTrack = false;
+            this.tabControlExtra9.DisplayStyleProvider.HotTrack = true;
+            this.tabControlExtra9.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabControlExtra9.DisplayStyleProvider.Opacity = 1F;
+            this.tabControlExtra9.DisplayStyleProvider.Overlap = 0;
+            this.tabControlExtra9.DisplayStyleProvider.Padding = new System.Drawing.Point(6, 5);
+            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorDisabled = System.Drawing.SystemColors.Control;
+            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
+            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorUnselected = System.Drawing.Color.Transparent;
+            this.tabControlExtra9.DisplayStyleProvider.SelectedTabIsLarger = false;
+            this.tabControlExtra9.DisplayStyleProvider.ShowTabCloser = true;
+            this.tabControlExtra9.DisplayStyleProvider.TabColorDisabled1 = System.Drawing.SystemColors.Control;
+            this.tabControlExtra9.DisplayStyleProvider.TabColorDisabled2 = System.Drawing.SystemColors.Control;
+            this.tabControlExtra9.DisplayStyleProvider.TabColorFocused1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.tabControlExtra9.DisplayStyleProvider.TabColorFocused2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.tabControlExtra9.DisplayStyleProvider.TabColorHighLighted1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            this.tabControlExtra9.DisplayStyleProvider.TabColorHighLighted2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
+            this.tabControlExtra9.DisplayStyleProvider.TabColorSelected1 = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
+            this.tabControlExtra9.DisplayStyleProvider.TabColorSelected2 = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
+            this.tabControlExtra9.DisplayStyleProvider.TabColorUnSelected1 = System.Drawing.Color.Transparent;
+            this.tabControlExtra9.DisplayStyleProvider.TabColorUnSelected2 = System.Drawing.Color.Transparent;
+            this.tabControlExtra9.DisplayStyleProvider.TabPageMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.tabControlExtra9.DisplayStyleProvider.TextColorFocused = System.Drawing.Color.White;
+            this.tabControlExtra9.DisplayStyleProvider.TextColorHighlighted = System.Drawing.Color.White;
+            this.tabControlExtra9.DisplayStyleProvider.TextColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.tabControlExtra9.DisplayStyleProvider.TextColorUnselected = System.Drawing.Color.White;
+            this.tabControlExtra9.HotTrack = true;
+            this.tabControlExtra9.Location = new System.Drawing.Point(14, 63);
+            this.tabControlExtra9.Multiline = true;
+            this.tabControlExtra9.Name = "tabControlExtra9";
+            this.tabControlExtra9.SelectedIndex = 0;
+            this.tabControlExtra9.Size = new System.Drawing.Size(166, 317);
+            this.tabControlExtra9.TabIndex = 8;
+            // 
+            // tabPage69
+            // 
+            this.tabPage69.Controls.Add(this.pictureBox2);
+            this.tabPage69.Location = new System.Drawing.Point(113, 4);
+            this.tabPage69.Name = "tabPage69";
+            this.tabPage69.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage69.Size = new System.Drawing.Size(49, 309);
+            this.tabPage69.TabIndex = 0;
+            this.tabPage69.Text = "tabPage69";
+            this.tabPage69.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(49, 309);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // tabPage70
+            // 
+            this.tabPage70.Location = new System.Drawing.Point(113, 4);
+            this.tabPage70.Name = "tabPage70";
+            this.tabPage70.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage70.Size = new System.Drawing.Size(49, 309);
+            this.tabPage70.TabIndex = 1;
+            this.tabPage70.Text = "tabPage70";
+            this.tabPage70.UseVisualStyleBackColor = true;
+            // 
+            // tabPage71
+            // 
+            this.tabPage71.Location = new System.Drawing.Point(113, 4);
+            this.tabPage71.Name = "tabPage71";
+            this.tabPage71.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage71.Size = new System.Drawing.Size(49, 309);
+            this.tabPage71.TabIndex = 2;
+            this.tabPage71.Text = "tabPage71";
+            this.tabPage71.UseVisualStyleBackColor = true;
+            // 
+            // tabPage72
+            // 
+            this.tabPage72.Location = new System.Drawing.Point(113, 4);
+            this.tabPage72.Name = "tabPage72";
+            this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage72.Size = new System.Drawing.Size(49, 309);
+            this.tabPage72.TabIndex = 3;
+            this.tabPage72.Text = "tabPage72";
+            this.tabPage72.UseVisualStyleBackColor = true;
+            // 
+            // tabPage73
+            // 
+            this.tabPage73.Location = new System.Drawing.Point(113, 4);
+            this.tabPage73.Name = "tabPage73";
+            this.tabPage73.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage73.Size = new System.Drawing.Size(49, 309);
+            this.tabPage73.TabIndex = 4;
+            this.tabPage73.Text = "tabPage73";
+            this.tabPage73.UseVisualStyleBackColor = true;
+            // 
+            // tabPage74
+            // 
+            this.tabPage74.Location = new System.Drawing.Point(113, 4);
+            this.tabPage74.Name = "tabPage74";
+            this.tabPage74.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage74.Size = new System.Drawing.Size(49, 309);
+            this.tabPage74.TabIndex = 5;
+            this.tabPage74.Text = "tabPage74";
+            this.tabPage74.UseVisualStyleBackColor = true;
+            // 
+            // tabPage75
+            // 
+            this.tabPage75.Location = new System.Drawing.Point(113, 4);
+            this.tabPage75.Name = "tabPage75";
+            this.tabPage75.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage75.Size = new System.Drawing.Size(49, 309);
+            this.tabPage75.TabIndex = 6;
+            this.tabPage75.Text = "tabPage75";
+            this.tabPage75.UseVisualStyleBackColor = true;
+            // 
+            // tabPage76
+            // 
+            this.tabPage76.Location = new System.Drawing.Point(113, 4);
+            this.tabPage76.Name = "tabPage76";
+            this.tabPage76.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage76.Size = new System.Drawing.Size(49, 309);
+            this.tabPage76.TabIndex = 7;
+            this.tabPage76.Text = "tabPage76";
+            this.tabPage76.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -208,10 +557,6 @@ namespace CSCustomTabControlDemo
             // 
             // tabControlExtra10
             // 
-            this.tabControlExtra10.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra10.AllowDrop = true;
             this.tabControlExtra10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -298,10 +643,10 @@ namespace CSCustomTabControlDemo
             // tabPage77
             // 
             this.tabPage77.ImageKey = "book_open.png";
-            this.tabPage77.Location = new System.Drawing.Point(4, 28);
+            this.tabPage77.Location = new System.Drawing.Point(4, 30);
             this.tabPage77.Name = "tabPage77";
             this.tabPage77.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage77.Size = new System.Drawing.Size(485, 42);
+            this.tabPage77.Size = new System.Drawing.Size(485, 40);
             this.tabPage77.TabIndex = 1;
             this.tabPage77.Text = "tabPage77";
             this.tabPage77.UseVisualStyleBackColor = true;
@@ -388,188 +733,8 @@ namespace CSCustomTabControlDemo
             this.tabPage85.Text = "tabPage85";
             this.tabPage85.UseVisualStyleBackColor = true;
             // 
-            // tabControlExtra9
-            // 
-            this.tabControlExtra9.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
-            this.tabControlExtra9.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabControlExtra9.Controls.Add(this.tabPage69);
-            this.tabControlExtra9.Controls.Add(this.tabPage70);
-            this.tabControlExtra9.Controls.Add(this.tabPage71);
-            this.tabControlExtra9.Controls.Add(this.tabPage72);
-            this.tabControlExtra9.Controls.Add(this.tabPage73);
-            this.tabControlExtra9.Controls.Add(this.tabPage74);
-            this.tabControlExtra9.Controls.Add(this.tabPage75);
-            this.tabControlExtra9.Controls.Add(this.tabPage76);
-            this.tabControlExtra9.DisplayStyle = TradeWright.UI.Forms.TabStyle.Rectangular;
-            // 
-            // 
-            // 
-            this.tabControlExtra9.DisplayStyleProvider.BlendStyle = TradeWright.UI.Forms.BlendStyle.Normal;
-            this.tabControlExtra9.DisplayStyleProvider.BorderColorDisabled = System.Drawing.SystemColors.Control;
-            this.tabControlExtra9.DisplayStyleProvider.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.tabControlExtra9.DisplayStyleProvider.BorderColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
-            this.tabControlExtra9.DisplayStyleProvider.BorderColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
-            this.tabControlExtra9.DisplayStyleProvider.BorderColorUnselected = System.Drawing.Color.Transparent;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorFocused = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorFocusedActive = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorHighlighted = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorHighlightedActive = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(176)))), ((int)(((byte)(239)))));
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorSelected = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonFillColorUnselected = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorFocused = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorFocusedActive = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorHighlighted = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorHighlightedActive = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorSelected = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorSelectedActive = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserButtonOutlineColorUnselected = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.CloserColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
-            this.tabControlExtra9.DisplayStyleProvider.CloserColorFocusedActive = System.Drawing.Color.White;
-            this.tabControlExtra9.DisplayStyleProvider.CloserColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(195)))), ((int)(((byte)(241)))));
-            this.tabControlExtra9.DisplayStyleProvider.CloserColorHighlightedActive = System.Drawing.Color.White;
-            this.tabControlExtra9.DisplayStyleProvider.CloserColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(112)))));
-            this.tabControlExtra9.DisplayStyleProvider.CloserColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.tabControlExtra9.DisplayStyleProvider.CloserColorUnselected = System.Drawing.Color.Empty;
-            this.tabControlExtra9.DisplayStyleProvider.FocusTrack = false;
-            this.tabControlExtra9.DisplayStyleProvider.HotTrack = true;
-            this.tabControlExtra9.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tabControlExtra9.DisplayStyleProvider.Opacity = 1F;
-            this.tabControlExtra9.DisplayStyleProvider.Overlap = 0;
-            this.tabControlExtra9.DisplayStyleProvider.Padding = new System.Drawing.Point(6, 5);
-            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorDisabled = System.Drawing.SystemColors.Control;
-            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
-            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
-            this.tabControlExtra9.DisplayStyleProvider.PageBackgroundColorUnselected = System.Drawing.Color.Transparent;
-            this.tabControlExtra9.DisplayStyleProvider.SelectedTabIsLarger = false;
-            this.tabControlExtra9.DisplayStyleProvider.ShowTabCloser = true;
-            this.tabControlExtra9.DisplayStyleProvider.TabColorDisabled1 = System.Drawing.SystemColors.Control;
-            this.tabControlExtra9.DisplayStyleProvider.TabColorDisabled2 = System.Drawing.SystemColors.Control;
-            this.tabControlExtra9.DisplayStyleProvider.TabColorFocused1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.tabControlExtra9.DisplayStyleProvider.TabColorFocused2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.tabControlExtra9.DisplayStyleProvider.TabColorHighLighted1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
-            this.tabControlExtra9.DisplayStyleProvider.TabColorHighLighted2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(151)))), ((int)(((byte)(234)))));
-            this.tabControlExtra9.DisplayStyleProvider.TabColorSelected1 = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
-            this.tabControlExtra9.DisplayStyleProvider.TabColorSelected2 = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(206)))), ((int)(((byte)(219)))));
-            this.tabControlExtra9.DisplayStyleProvider.TabColorUnSelected1 = System.Drawing.Color.Transparent;
-            this.tabControlExtra9.DisplayStyleProvider.TabColorUnSelected2 = System.Drawing.Color.Transparent;
-            this.tabControlExtra9.DisplayStyleProvider.TabPageMargin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.tabControlExtra9.DisplayStyleProvider.TextColorFocused = System.Drawing.Color.White;
-            this.tabControlExtra9.DisplayStyleProvider.TextColorHighlighted = System.Drawing.Color.White;
-            this.tabControlExtra9.DisplayStyleProvider.TextColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.tabControlExtra9.DisplayStyleProvider.TextColorUnselected = System.Drawing.Color.White;
-            this.tabControlExtra9.HotTrack = true;
-            this.tabControlExtra9.Location = new System.Drawing.Point(14, 63);
-            this.tabControlExtra9.Multiline = true;
-            this.tabControlExtra9.Name = "tabControlExtra9";
-            this.tabControlExtra9.SelectedIndex = 0;
-            this.tabControlExtra9.Size = new System.Drawing.Size(166, 317);
-            this.tabControlExtra9.TabIndex = 8;
-            // 
-            // tabPage69
-            // 
-            this.tabPage69.Controls.Add(this.pictureBox2);
-            this.tabPage69.Location = new System.Drawing.Point(74, 4);
-            this.tabPage69.Name = "tabPage69";
-            this.tabPage69.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage69.Size = new System.Drawing.Size(88, 309);
-            this.tabPage69.TabIndex = 0;
-            this.tabPage69.Text = "tabPage69";
-            this.tabPage69.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(88, 309);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // tabPage70
-            // 
-            this.tabPage70.Location = new System.Drawing.Point(113, 4);
-            this.tabPage70.Name = "tabPage70";
-            this.tabPage70.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage70.Size = new System.Drawing.Size(49, 309);
-            this.tabPage70.TabIndex = 1;
-            this.tabPage70.Text = "tabPage70";
-            this.tabPage70.UseVisualStyleBackColor = true;
-            // 
-            // tabPage71
-            // 
-            this.tabPage71.Location = new System.Drawing.Point(113, 4);
-            this.tabPage71.Name = "tabPage71";
-            this.tabPage71.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage71.Size = new System.Drawing.Size(49, 309);
-            this.tabPage71.TabIndex = 2;
-            this.tabPage71.Text = "tabPage71";
-            this.tabPage71.UseVisualStyleBackColor = true;
-            // 
-            // tabPage72
-            // 
-            this.tabPage72.Location = new System.Drawing.Point(113, 4);
-            this.tabPage72.Name = "tabPage72";
-            this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage72.Size = new System.Drawing.Size(49, 309);
-            this.tabPage72.TabIndex = 3;
-            this.tabPage72.Text = "tabPage72";
-            this.tabPage72.UseVisualStyleBackColor = true;
-            // 
-            // tabPage73
-            // 
-            this.tabPage73.Location = new System.Drawing.Point(113, 4);
-            this.tabPage73.Name = "tabPage73";
-            this.tabPage73.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage73.Size = new System.Drawing.Size(49, 309);
-            this.tabPage73.TabIndex = 4;
-            this.tabPage73.Text = "tabPage73";
-            this.tabPage73.UseVisualStyleBackColor = true;
-            // 
-            // tabPage74
-            // 
-            this.tabPage74.Location = new System.Drawing.Point(113, 4);
-            this.tabPage74.Name = "tabPage74";
-            this.tabPage74.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage74.Size = new System.Drawing.Size(49, 309);
-            this.tabPage74.TabIndex = 5;
-            this.tabPage74.Text = "tabPage74";
-            this.tabPage74.UseVisualStyleBackColor = true;
-            // 
-            // tabPage75
-            // 
-            this.tabPage75.Location = new System.Drawing.Point(113, 4);
-            this.tabPage75.Name = "tabPage75";
-            this.tabPage75.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage75.Size = new System.Drawing.Size(49, 309);
-            this.tabPage75.TabIndex = 6;
-            this.tabPage75.Text = "tabPage75";
-            this.tabPage75.UseVisualStyleBackColor = true;
-            // 
-            // tabPage76
-            // 
-            this.tabPage76.Location = new System.Drawing.Point(113, 4);
-            this.tabPage76.Name = "tabPage76";
-            this.tabPage76.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage76.Size = new System.Drawing.Size(49, 309);
-            this.tabPage76.TabIndex = 7;
-            this.tabPage76.Text = "tabPage76";
-            this.tabPage76.UseVisualStyleBackColor = true;
-            // 
             // tabControlExtra8
             // 
-            this.tabControlExtra8.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra8.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.tabControlExtra8.Controls.Add(this.tabPage36);
             this.tabControlExtra8.Controls.Add(this.tabPage37);
@@ -655,7 +820,7 @@ namespace CSCustomTabControlDemo
             this.tabPage36.Location = new System.Drawing.Point(4, 4);
             this.tabPage36.Name = "tabPage36";
             this.tabPage36.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage36.Size = new System.Drawing.Size(479, 45);
+            this.tabPage36.Size = new System.Drawing.Size(479, 42);
             this.tabPage36.TabIndex = 0;
             this.tabPage36.Text = "tabPage36";
             this.tabPage36.UseVisualStyleBackColor = true;
@@ -674,7 +839,7 @@ namespace CSCustomTabControlDemo
             this.tabPage37.Location = new System.Drawing.Point(4, 4);
             this.tabPage37.Name = "tabPage37";
             this.tabPage37.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage37.Size = new System.Drawing.Size(479, 45);
+            this.tabPage37.Size = new System.Drawing.Size(479, 42);
             this.tabPage37.TabIndex = 1;
             this.tabPage37.Text = "tabPage37";
             this.tabPage37.UseVisualStyleBackColor = true;
@@ -684,7 +849,7 @@ namespace CSCustomTabControlDemo
             this.tabPage38.Location = new System.Drawing.Point(4, 4);
             this.tabPage38.Name = "tabPage38";
             this.tabPage38.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage38.Size = new System.Drawing.Size(479, 45);
+            this.tabPage38.Size = new System.Drawing.Size(479, 42);
             this.tabPage38.TabIndex = 2;
             this.tabPage38.Text = "tabPage38";
             this.tabPage38.UseVisualStyleBackColor = true;
@@ -694,7 +859,7 @@ namespace CSCustomTabControlDemo
             this.tabPage39.Location = new System.Drawing.Point(4, 4);
             this.tabPage39.Name = "tabPage39";
             this.tabPage39.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage39.Size = new System.Drawing.Size(479, 45);
+            this.tabPage39.Size = new System.Drawing.Size(479, 42);
             this.tabPage39.TabIndex = 3;
             this.tabPage39.Text = "tabPage39";
             this.tabPage39.UseVisualStyleBackColor = true;
@@ -704,7 +869,7 @@ namespace CSCustomTabControlDemo
             this.tabPage40.Location = new System.Drawing.Point(4, 4);
             this.tabPage40.Name = "tabPage40";
             this.tabPage40.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage40.Size = new System.Drawing.Size(479, 45);
+            this.tabPage40.Size = new System.Drawing.Size(479, 42);
             this.tabPage40.TabIndex = 4;
             this.tabPage40.Text = "tabPage40";
             this.tabPage40.UseVisualStyleBackColor = true;
@@ -714,7 +879,7 @@ namespace CSCustomTabControlDemo
             this.tabPage41.Location = new System.Drawing.Point(4, 4);
             this.tabPage41.Name = "tabPage41";
             this.tabPage41.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage41.Size = new System.Drawing.Size(479, 45);
+            this.tabPage41.Size = new System.Drawing.Size(479, 42);
             this.tabPage41.TabIndex = 5;
             this.tabPage41.Text = "tabPage41";
             this.tabPage41.UseVisualStyleBackColor = true;
@@ -724,7 +889,7 @@ namespace CSCustomTabControlDemo
             this.tabPage42.Location = new System.Drawing.Point(4, 4);
             this.tabPage42.Name = "tabPage42";
             this.tabPage42.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage42.Size = new System.Drawing.Size(479, 45);
+            this.tabPage42.Size = new System.Drawing.Size(479, 42);
             this.tabPage42.TabIndex = 6;
             this.tabPage42.Text = "tabPage42";
             this.tabPage42.UseVisualStyleBackColor = true;
@@ -734,7 +899,7 @@ namespace CSCustomTabControlDemo
             this.tabPage43.Location = new System.Drawing.Point(4, 4);
             this.tabPage43.Name = "tabPage43";
             this.tabPage43.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage43.Size = new System.Drawing.Size(479, 45);
+            this.tabPage43.Size = new System.Drawing.Size(479, 42);
             this.tabPage43.TabIndex = 7;
             this.tabPage43.Text = "tabPage43";
             this.tabPage43.UseVisualStyleBackColor = true;
@@ -744,198 +909,13 @@ namespace CSCustomTabControlDemo
             this.tabPage44.Location = new System.Drawing.Point(4, 4);
             this.tabPage44.Name = "tabPage44";
             this.tabPage44.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage44.Size = new System.Drawing.Size(479, 45);
+            this.tabPage44.Size = new System.Drawing.Size(479, 42);
             this.tabPage44.TabIndex = 8;
             this.tabPage44.Text = "tabPage44";
             this.tabPage44.UseVisualStyleBackColor = true;
             // 
-            // tabControlExtra7
-            // 
-            this.tabControlExtra7.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
-            this.tabControlExtra7.AllowDrop = true;
-            this.tabControlExtra7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlExtra7.Controls.Add(this.tabPage32);
-            this.tabControlExtra7.Controls.Add(this.tabPage33);
-            this.tabControlExtra7.Controls.Add(this.tabPage34);
-            this.tabControlExtra7.Controls.Add(this.tabPage35);
-            this.tabControlExtra7.Controls.Add(this.tabPage31);
-            this.tabControlExtra7.Controls.Add(this.tabPage45);
-            this.tabControlExtra7.Controls.Add(this.tabPage46);
-            this.tabControlExtra7.Controls.Add(this.tabPage47);
-            this.tabControlExtra7.Controls.Add(this.tabPage48);
-            this.tabControlExtra7.DisplayStyle = TradeWright.UI.Forms.TabStyle.VS2010;
-            // 
-            // 
-            // 
-            this.tabControlExtra7.DisplayStyleProvider.BlendStyle = TradeWright.UI.Forms.BlendStyle.Normal;
-            this.tabControlExtra7.DisplayStyleProvider.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.tabControlExtra7.DisplayStyleProvider.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(243)))), ((int)(((byte)(205)))));
-            this.tabControlExtra7.DisplayStyleProvider.BorderColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(167)))), ((int)(((byte)(183)))));
-            this.tabControlExtra7.DisplayStyleProvider.BorderColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
-            this.tabControlExtra7.DisplayStyleProvider.BorderColorUnselected = System.Drawing.Color.Transparent;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorFocused = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorFocusedActive = System.Drawing.Color.White;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorHighlighted = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorHighlightedActive = System.Drawing.Color.White;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorSelected = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorSelectedActive = System.Drawing.Color.White;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonFillColorUnselected = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorFocused = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorFocusedActive = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorHighlighted = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorHighlightedActive = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorSelected = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorSelectedActive = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
-            this.tabControlExtra7.DisplayStyleProvider.CloserButtonOutlineColorUnselected = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.CloserColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(99)))), ((int)(((byte)(61)))));
-            this.tabControlExtra7.DisplayStyleProvider.CloserColorFocusedActive = System.Drawing.Color.Black;
-            this.tabControlExtra7.DisplayStyleProvider.CloserColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(221)))));
-            this.tabControlExtra7.DisplayStyleProvider.CloserColorHighlightedActive = System.Drawing.Color.Black;
-            this.tabControlExtra7.DisplayStyleProvider.CloserColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(102)))), ((int)(((byte)(115)))));
-            this.tabControlExtra7.DisplayStyleProvider.CloserColorSelectedActive = System.Drawing.Color.Black;
-            this.tabControlExtra7.DisplayStyleProvider.CloserColorUnselected = System.Drawing.Color.Empty;
-            this.tabControlExtra7.DisplayStyleProvider.FocusTrack = false;
-            this.tabControlExtra7.DisplayStyleProvider.HotTrack = true;
-            this.tabControlExtra7.DisplayStyleProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tabControlExtra7.DisplayStyleProvider.Opacity = 1F;
-            this.tabControlExtra7.DisplayStyleProvider.Overlap = 0;
-            this.tabControlExtra7.DisplayStyleProvider.Padding = new System.Drawing.Point(6, 5);
-            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
-            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorHighlighted = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(92)))), ((int)(((byte)(116)))));
-            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
-            this.tabControlExtra7.DisplayStyleProvider.PageBackgroundColorUnselected = System.Drawing.Color.Transparent;
-            this.tabControlExtra7.DisplayStyleProvider.Radius = 3;
-            this.tabControlExtra7.DisplayStyleProvider.SelectedTabIsLarger = false;
-            this.tabControlExtra7.DisplayStyleProvider.ShowTabCloser = true;
-            this.tabControlExtra7.DisplayStyleProvider.TabColorDisabled1 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.tabControlExtra7.DisplayStyleProvider.TabColorDisabled2 = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(57)))), ((int)(((byte)(85)))));
-            this.tabControlExtra7.DisplayStyleProvider.TabColorFocused1 = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(195)))), ((int)(((byte)(101)))));
-            this.tabControlExtra7.DisplayStyleProvider.TabColorFocused2 = System.Drawing.SystemColors.Window;
-            this.tabControlExtra7.DisplayStyleProvider.TabColorHighLighted1 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(92)))), ((int)(((byte)(116)))));
-            this.tabControlExtra7.DisplayStyleProvider.TabColorHighLighted2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(92)))), ((int)(((byte)(116)))));
-            this.tabControlExtra7.DisplayStyleProvider.TabColorSelected1 = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
-            this.tabControlExtra7.DisplayStyleProvider.TabColorSelected2 = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(212)))), ((int)(((byte)(223)))));
-            this.tabControlExtra7.DisplayStyleProvider.TabColorUnSelected1 = System.Drawing.Color.Transparent;
-            this.tabControlExtra7.DisplayStyleProvider.TabColorUnSelected2 = System.Drawing.Color.Transparent;
-            this.tabControlExtra7.DisplayStyleProvider.TabPageMargin = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.tabControlExtra7.DisplayStyleProvider.TabPageRadius = 2;
-            this.tabControlExtra7.DisplayStyleProvider.TextColorDisabled = System.Drawing.Color.WhiteSmoke;
-            this.tabControlExtra7.DisplayStyleProvider.TextColorFocused = System.Drawing.SystemColors.ControlText;
-            this.tabControlExtra7.DisplayStyleProvider.TextColorHighlighted = System.Drawing.Color.White;
-            this.tabControlExtra7.DisplayStyleProvider.TextColorSelected = System.Drawing.SystemColors.ControlText;
-            this.tabControlExtra7.DisplayStyleProvider.TextColorUnselected = System.Drawing.Color.White;
-            this.tabControlExtra7.HotTrack = true;
-            this.tabControlExtra7.ImageList = this.imageList1;
-            this.tabControlExtra7.Location = new System.Drawing.Point(12, 4);
-            this.tabControlExtra7.Name = "tabControlExtra7";
-            this.tabControlExtra7.SelectedIndex = 0;
-            this.tabControlExtra7.Size = new System.Drawing.Size(493, 74);
-            this.tabControlExtra7.TabIndex = 7;
-            // 
-            // tabPage32
-            // 
-            this.tabPage32.ImageKey = "book_open.png";
-            this.tabPage32.Location = new System.Drawing.Point(4, 28);
-            this.tabPage32.Name = "tabPage32";
-            this.tabPage32.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage32.Size = new System.Drawing.Size(485, 42);
-            this.tabPage32.TabIndex = 1;
-            this.tabPage32.Text = "tabPage32";
-            this.tabPage32.UseVisualStyleBackColor = true;
-            // 
-            // tabPage33
-            // 
-            this.tabPage33.ImageKey = "brush3.png";
-            this.tabPage33.Location = new System.Drawing.Point(4, 28);
-            this.tabPage33.Name = "tabPage33";
-            this.tabPage33.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage33.Size = new System.Drawing.Size(485, 42);
-            this.tabPage33.TabIndex = 2;
-            this.tabPage33.Text = "tabPage33";
-            this.tabPage33.UseVisualStyleBackColor = true;
-            // 
-            // tabPage34
-            // 
-            this.tabPage34.ImageKey = "(none)";
-            this.tabPage34.Location = new System.Drawing.Point(4, 28);
-            this.tabPage34.Name = "tabPage34";
-            this.tabPage34.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage34.Size = new System.Drawing.Size(485, 42);
-            this.tabPage34.TabIndex = 3;
-            this.tabPage34.Text = "tabPage34";
-            this.tabPage34.UseVisualStyleBackColor = true;
-            // 
-            // tabPage35
-            // 
-            this.tabPage35.ImageKey = "(none)";
-            this.tabPage35.Location = new System.Drawing.Point(4, 28);
-            this.tabPage35.Name = "tabPage35";
-            this.tabPage35.Size = new System.Drawing.Size(485, 42);
-            this.tabPage35.TabIndex = 4;
-            this.tabPage35.Text = "tabPage35";
-            this.tabPage35.UseVisualStyleBackColor = true;
-            // 
-            // tabPage31
-            // 
-            this.tabPage31.Location = new System.Drawing.Point(4, 28);
-            this.tabPage31.Name = "tabPage31";
-            this.tabPage31.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage31.Size = new System.Drawing.Size(485, 42);
-            this.tabPage31.TabIndex = 5;
-            this.tabPage31.Text = "tabPage31";
-            this.tabPage31.UseVisualStyleBackColor = true;
-            // 
-            // tabPage45
-            // 
-            this.tabPage45.Location = new System.Drawing.Point(4, 28);
-            this.tabPage45.Name = "tabPage45";
-            this.tabPage45.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage45.Size = new System.Drawing.Size(485, 42);
-            this.tabPage45.TabIndex = 6;
-            this.tabPage45.Text = "tabPage45";
-            this.tabPage45.UseVisualStyleBackColor = true;
-            // 
-            // tabPage46
-            // 
-            this.tabPage46.Location = new System.Drawing.Point(4, 28);
-            this.tabPage46.Name = "tabPage46";
-            this.tabPage46.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage46.Size = new System.Drawing.Size(485, 42);
-            this.tabPage46.TabIndex = 7;
-            this.tabPage46.Text = "tabPage46";
-            this.tabPage46.UseVisualStyleBackColor = true;
-            // 
-            // tabPage47
-            // 
-            this.tabPage47.Location = new System.Drawing.Point(4, 28);
-            this.tabPage47.Name = "tabPage47";
-            this.tabPage47.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage47.Size = new System.Drawing.Size(485, 42);
-            this.tabPage47.TabIndex = 8;
-            this.tabPage47.Text = "tabPage47";
-            this.tabPage47.UseVisualStyleBackColor = true;
-            // 
-            // tabPage48
-            // 
-            this.tabPage48.Location = new System.Drawing.Point(4, 28);
-            this.tabPage48.Name = "tabPage48";
-            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage48.Size = new System.Drawing.Size(485, 42);
-            this.tabPage48.TabIndex = 9;
-            this.tabPage48.Text = "tabPage48";
-            this.tabPage48.UseVisualStyleBackColor = true;
-            // 
             // tabControlExtra2
             // 
-            this.tabControlExtra2.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra2.Controls.Add(this.tabPage6);
             this.tabControlExtra2.Controls.Add(this.tabPage7);
             this.tabControlExtra2.Controls.Add(this.tabPage8);
@@ -1012,10 +992,10 @@ namespace CSCustomTabControlDemo
             // tabPage6
             // 
             this.tabPage6.ImageKey = "(none)";
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(489, 46);
+            this.tabPage6.Size = new System.Drawing.Size(489, 44);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "Allgemein";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1065,10 +1045,6 @@ namespace CSCustomTabControlDemo
             // 
             // tabControlExtra1
             // 
-            this.tabControlExtra1.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra1.Controls.Add(this.tabPage1);
             this.tabControlExtra1.Controls.Add(this.tabPage2);
             this.tabControlExtra1.Controls.Add(this.tabPage3);
@@ -1157,10 +1133,10 @@ namespace CSCustomTabControlDemo
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.ImageKey = "(none)";
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(489, 65);
+            this.tabPage1.Size = new System.Drawing.Size(489, 63);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Allge&mein";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1316,10 +1292,6 @@ namespace CSCustomTabControlDemo
             // 
             // tabControlExtra6
             // 
-            this.tabControlExtra6.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra6.AllowDrop = true;
             this.tabControlExtra6.Controls.Add(this.tabPage26);
             this.tabControlExtra6.Controls.Add(this.tabPage27);
@@ -1400,10 +1372,10 @@ namespace CSCustomTabControlDemo
             // tabPage26
             // 
             this.tabPage26.ImageKey = "google_favicon.png";
-            this.tabPage26.Location = new System.Drawing.Point(4, 28);
+            this.tabPage26.Location = new System.Drawing.Point(4, 30);
             this.tabPage26.Name = "tabPage26";
             this.tabPage26.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage26.Size = new System.Drawing.Size(489, 40);
+            this.tabPage26.Size = new System.Drawing.Size(489, 38);
             this.tabPage26.TabIndex = 0;
             this.tabPage26.Text = "Allgemein";
             this.tabPage26.UseVisualStyleBackColor = true;
@@ -1453,10 +1425,6 @@ namespace CSCustomTabControlDemo
             // 
             // tabControlExtra5
             // 
-            this.tabControlExtra5.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra5.Controls.Add(this.tabPage21);
             this.tabControlExtra5.Controls.Add(this.tabPage22);
             this.tabControlExtra5.Controls.Add(this.tabPage23);
@@ -1535,10 +1503,10 @@ namespace CSCustomTabControlDemo
             // tabPage21
             // 
             this.tabPage21.ImageKey = "(none)";
-            this.tabPage21.Location = new System.Drawing.Point(4, 28);
+            this.tabPage21.Location = new System.Drawing.Point(4, 30);
             this.tabPage21.Name = "tabPage21";
             this.tabPage21.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage21.Size = new System.Drawing.Size(489, 40);
+            this.tabPage21.Size = new System.Drawing.Size(489, 38);
             this.tabPage21.TabIndex = 0;
             this.tabPage21.Text = "Allgemein";
             this.tabPage21.UseVisualStyleBackColor = true;
@@ -1588,10 +1556,6 @@ namespace CSCustomTabControlDemo
             // 
             // tabControlExtra3
             // 
-            this.tabControlExtra3.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra3.Controls.Add(this.tabPage11);
             this.tabControlExtra3.Controls.Add(this.tabPage12);
             this.tabControlExtra3.Controls.Add(this.tabPage13);
@@ -1670,10 +1634,10 @@ namespace CSCustomTabControlDemo
             // tabPage11
             // 
             this.tabPage11.ImageKey = "(none)";
-            this.tabPage11.Location = new System.Drawing.Point(4, 24);
+            this.tabPage11.Location = new System.Drawing.Point(4, 26);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(489, 44);
+            this.tabPage11.Size = new System.Drawing.Size(489, 42);
             this.tabPage11.TabIndex = 0;
             this.tabPage11.Text = "Allgemein";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -1723,10 +1687,6 @@ namespace CSCustomTabControlDemo
             // 
             // tabControlExtra4
             // 
-            this.tabControlExtra4.Aaardvark = new string[] {
-        "None",
-        "Wiggly",
-        "Woggly"};
             this.tabControlExtra4.Controls.Add(this.tabPage16);
             this.tabControlExtra4.Controls.Add(this.tabPage17);
             this.tabControlExtra4.Controls.Add(this.tabPage18);
@@ -1816,10 +1776,10 @@ namespace CSCustomTabControlDemo
             // tabPage16
             // 
             this.tabPage16.ImageKey = "battery.png";
-            this.tabPage16.Location = new System.Drawing.Point(4, 24);
+            this.tabPage16.Location = new System.Drawing.Point(4, 26);
             this.tabPage16.Name = "tabPage16";
             this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage16.Size = new System.Drawing.Size(489, 46);
+            this.tabPage16.Size = new System.Drawing.Size(489, 44);
             this.tabPage16.TabIndex = 0;
             this.tabPage16.Text = "Allgemein";
             this.tabPage16.UseVisualStyleBackColor = true;
@@ -1999,16 +1959,16 @@ namespace CSCustomTabControlDemo
             this.Name = "MainForm";
             this.Text = "TabControl Demo";
             this.panel1.ResumeLayout(false);
+            this.tabControlExtra7.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.tabControlExtra10.ResumeLayout(false);
             this.tabControlExtra9.ResumeLayout(false);
             this.tabPage69.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.tabControlExtra10.ResumeLayout(false);
             this.tabControlExtra8.ResumeLayout(false);
             this.tabPage36.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabControlExtra7.ResumeLayout(false);
             this.tabControlExtra2.ResumeLayout(false);
             this.tabControlExtra1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
