@@ -12,11 +12,10 @@ using System.Windows.Forms;
 
 namespace TradeWright.UI.Forms 
 {
-	/// <summary>
-	/// Description of NativeMethods.
-	/// </summary>
-	//[SecurityPermission(SecurityAction.Assert, Flags=SecurityPermissionFlag.UnmanagedCode)]
-	internal sealed class NativeMethods
+    /// <summary>
+    /// See https://docs.microsoft.com/en-gb/visualstudio/code-quality/ca1060-move-p-invokes-to-nativemethods-class?view=vs-2017
+    /// </summary>
+    internal sealed class NativeMethods
 	{
 		private NativeMethods(){}
 		
@@ -32,49 +31,7 @@ namespace TradeWright.UI.Forms
 		public const int WS_EX_LAYOUTRTL  = 0x400000;
 		public const int WS_EX_NOINHERITLAYOUT = 0x100000;
 
-#endregion
-
-#region User32.dll
-
-//        [DllImport("user32.dll"), SecurityPermission(SecurityAction.Demand)]
-//		public static extern IntPtr SendMessage(IntPtr hWnd, UInt32 msg, IntPtr wParam, IntPtr lParam);
-
-		public static IntPtr SendMessage (IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam){
-			//	This Method replaces the User32 method SendMessage, but will only work for sending
-			//	messages to Managed controls.
-			Control control = Control.FromHandle(hWnd);
-			if (control == null){
-				return IntPtr.Zero;
-			}
-			
-			Message message = new Message();
-			message.HWnd = hWnd;
-			message.LParam = lParam;
-			message.WParam = wParam;
-			message.Msg = msg;
-			
-			MethodInfo wproc = control.GetType().GetMethod("WndProc"
-			                                               , BindingFlags.NonPublic 
-			                                                | BindingFlags.InvokeMethod 
-			                                                | BindingFlags.FlattenHierarchy 
-			                                                | BindingFlags.IgnoreCase 
-			                                                | BindingFlags.Instance);
-			
-			object[] args = {message};
-			wproc.Invoke(control, args);
-			
-			return ((Message)args[0]).Result;
-		}
-
-
-//		[DllImport("user32.dll")]
-//		public static extern IntPtr BeginPaint(IntPtr hWnd, ref PAINTSTRUCT paintStruct);
-//		
-//		[DllImport("user32.dll")]
-//		[return: MarshalAs(UnmanagedType.Bool)]
-//		public static extern bool EndPaint(IntPtr hWnd, ref PAINTSTRUCT paintStruct);
-//
-#endregion
+        #endregion
 
 #region Misc Functions
 
@@ -89,8 +46,6 @@ namespace TradeWright.UI.Forms
                 return (dWord.ToInt32() >> 16) & 0xffff;
         }
  
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2106:SecureAsserts")]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
  		public static IntPtr ToIntPtr(object structure){
 			IntPtr lparam = IntPtr.Zero;
 			lparam = Marshal.AllocCoTaskMem(Marshal.SizeOf(structure));

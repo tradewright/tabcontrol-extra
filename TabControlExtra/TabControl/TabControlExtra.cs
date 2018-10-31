@@ -266,7 +266,7 @@ namespace TradeWright.UI.Forms {
         [System.Diagnostics.DebuggerStepThrough()]
         public int GetActiveIndex(Point mousePosition) {
             NativeMethods.TCHITTESTINFO hitTestInfo = new NativeMethods.TCHITTESTINFO(mousePosition);
-            int index = NativeMethods.SendMessage(this.Handle, NativeMethods.TCM_HITTEST, IntPtr.Zero, NativeMethods.ToIntPtr(hitTestInfo)).ToInt32();
+            int index = SendMessage(NativeMethods.TCM_HITTEST, IntPtr.Zero, NativeMethods.ToIntPtr(hitTestInfo)).ToInt32();
             if (index == -1) {
                 return -1;
             } else {
@@ -468,13 +468,13 @@ namespace TradeWright.UI.Forms {
         #region	Base class event processing
 
         protected override void OnFontChanged(EventArgs e) {
-            IntPtr hFont = this.Font.ToHfont();
-            NativeMethods.SendMessage(this.Handle, NativeMethods.WM_SETFONT, hFont, (IntPtr)(-1));
-            NativeMethods.SendMessage(this.Handle, NativeMethods.WM_FONTCHANGE, IntPtr.Zero, IntPtr.Zero);
+            //IntPtr hFont = this.Font.ToHfont();
+            //NativeMethods.SendMessage(this.Handle, NativeMethods.WM_SETFONT, hFont, (IntPtr)(-1));
+            //NativeMethods.SendMessage(this.Handle, NativeMethods.WM_FONTCHANGE, IntPtr.Zero, IntPtr.Zero);
             this.UpdateStyles();
         }
 
-        private void createGraphicsBuffers()
+        private void CreateGraphicsBuffers()
         {
             //	Recreate the buffer for manual double buffering
             if (this.Width > 0 && this.Height > 0)
@@ -518,7 +518,7 @@ namespace TradeWright.UI.Forms {
 
         protected override void OnResize(EventArgs e) {
             //var start = DateTime.Now;
-            createGraphicsBuffers();
+            CreateGraphicsBuffers();
             base.OnResize(e);
             //System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + " TabControl " + this.GetHashCode() + " resized: " + DateTime.Now.Subtract(start).TotalMilliseconds + "ms; size: " + this.Size.ToString() + " location: " + this.Location.ToString());
         }
@@ -620,15 +620,11 @@ namespace TradeWright.UI.Forms {
         }
 
         protected virtual void OnTabImageClick(TabControlEventArgs e) {
-            if (this.TabImageClick != null) {
-                this.TabImageClick(this, e);
-            }
+            TabImageClick?.Invoke(this, e);
         }
 
         protected virtual void OnTabClosed(TabControlEventArgs e) {
-            if (this.TabClosed != null) {
-                this.TabClosed(this, e);
-            }
+            TabClosed?.Invoke(this, e);
         }
 
         protected virtual void OnTabClosing(TabControlCancelEventArgs e) {
@@ -644,7 +640,7 @@ namespace TradeWright.UI.Forms {
                 this.SelectedIndex = selectedIndex;
             }
             if (this.TabClosing != null) {
-                this.TabClosing(this, e);
+                TabClosing(this, e);
             }
 
             OnTabClosed(new TabControlEventArgs(e.TabPage, e.TabPageIndex, e.Action));
@@ -655,9 +651,7 @@ namespace TradeWright.UI.Forms {
             this.Invalidate();
 
             //	Raise the event
-            if (this.HScroll != null) {
-                this.HScroll(this, e);
-            }
+            HScroll?.Invoke(this, e);
 
             if (e.Type == ScrollEventType.EndScroll) {
                 this._oldValue = e.NewValue;
@@ -1552,6 +1546,23 @@ namespace TradeWright.UI.Forms {
 
         public static bool IsCenterAligned(ContentAlignment alignment) {
             return ((int)alignment & AnyCenterAlign) != 0;
+        }
+
+        #endregion
+
+        #region Private methods
+
+        public IntPtr SendMessage(int msg, IntPtr wParam, IntPtr lParam) {
+            Message message = new Message {
+                HWnd = this.Handle,
+                LParam = lParam,
+                WParam = wParam,
+                Msg = msg
+            };
+
+            WndProc(ref message);
+
+            return message.Result;
         }
 
         #endregion
