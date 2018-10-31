@@ -158,6 +158,8 @@ publish/
 # in these scripts will be unencrypted
 PublishScripts/
 
+# NuGet Package Definitions
+*.nuspec
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
