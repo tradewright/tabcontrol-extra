@@ -46,27 +46,27 @@ namespace TradeWright.UI.Forms
             this.BorderColorFocused = Color.FromArgb(255, 243, 205);
             this.BorderColorHighlighted = Color.FromArgb(155, 167, 183);
             this.BorderColorSelected = Color.FromArgb(206, 212, 223);
-            this.BorderColorUnselected = Color.FromArgb(41, 57, 85);
+            this.BorderColorUnselected = Color.Transparent;
 
             this.PageBackgroundColorDisabled = Color.FromArgb(41, 57, 85);
-            this.PageBackgroundColorFocused = Color.FromArgb(255, 243, 205);
-            this.PageBackgroundColorHighlighted = Color.FromArgb(75,92,116);
+            this.PageBackgroundColorFocused = Color.FromArgb(229, 195, 101);
+            this.PageBackgroundColorHighlighted = Color.FromArgb(75, 92, 116);
             this.PageBackgroundColorSelected = Color.FromArgb(206, 212, 223);
-            this.PageBackgroundColorUnselected = Color.FromArgb(41, 57, 85);
+            this.PageBackgroundColorUnselected = Color.Transparent;
 
             this.TabColorDisabled1 = this.PageBackgroundColorDisabled;
             this.TabColorDisabled2 = this.TabColorDisabled1;
             this.TabColorFocused1 = this.PageBackgroundColorFocused;
-            this.TabColorFocused2 = this.TabColorFocused1;
+            this.TabColorFocused2 = SystemColors.Window;
             this.TabColorHighLighted1 = this.PageBackgroundColorHighlighted;
             this.TabColorHighLighted2 = this.TabColorHighLighted1;
             this.TabColorSelected1 = this.PageBackgroundColorSelected;
             this.TabColorSelected2 = this.TabColorSelected1;
-            this.TabColorUnSelected1 = this.PageBackgroundColorUnselected;
-            this.TabColorUnSelected1 = this.TabColorUnSelected1;
+            this.TabColorUnSelected1 = Color.Transparent;
+            this.TabColorUnSelected1 = Color.Transparent;
 
             //	Must set after the _Radius as this is used in the calculations of the actual padding
-			this.Padding = new Point(6, 5);
+            this.Padding = new Point(6, 5);
 
             this.TabPageMargin = new Padding(0, 4, 0, 4);
             this.TabPageRadius = 2;     

@@ -43,13 +43,13 @@ namespace TradeWright.UI.Forms {
             this.TextColorFocused = Color.White;
             this.TextColorHighlighted = Color.White;
             this.TextColorSelected = Color.FromArgb(113, 113, 113);
-            this.TextColorUnselected = Color.Black;
+            this.TextColorUnselected = Color.White;
 
             this.PageBackgroundColorDisabled = SystemColors.Control;
             this.PageBackgroundColorFocused = Color.FromArgb(0, 122, 204);
             this.PageBackgroundColorHighlighted = Color.FromArgb(28, 151, 234);
             this.PageBackgroundColorSelected = Color.FromArgb(204, 206, 219);
-            this.PageBackgroundColorUnselected = Color.FromArgb(239, 239, 242);
+            this.PageBackgroundColorUnselected = Color.Transparent;
 
             this.BorderColorDisabled = this.PageBackgroundColorDisabled;
             this.BorderColorFocused = this.PageBackgroundColorFocused;
