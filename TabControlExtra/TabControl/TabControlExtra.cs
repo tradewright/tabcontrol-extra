@@ -628,6 +628,7 @@ namespace TradeWright.UI.Forms {
         }
 
         protected virtual void OnTabClosing(TabControlCancelEventArgs e) {
+            TabClosing?.Invoke(this, e);
             if (e.Cancel)
                 return;
 
@@ -638,9 +639,6 @@ namespace TradeWright.UI.Forms {
                 this.SelectedIndex = selectedIndex - 1;
             } else {
                 this.SelectedIndex = selectedIndex;
-            }
-            if (this.TabClosing != null) {
-                TabClosing(this, e);
             }
 
             OnTabClosed(new TabControlEventArgs(e.TabPage, e.TabPageIndex, e.Action));
