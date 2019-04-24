@@ -674,7 +674,8 @@ namespace TradeWright.UI.Forms {
         }
 
         protected override void OnMouseClick(MouseEventArgs e) {
-            int index = this.GetActiveIndex(new Point(e.X, e.Y));
+            var ev = getAdjustedMouseEventArgs(e);
+            int index = this.GetActiveIndex(new Point(ev.X, ev.Y));
 
             //	If we are clicking on an image then raise the ImageClicked event before raising the standard mouse click event
             //	if there if a handler.
@@ -683,8 +684,26 @@ namespace TradeWright.UI.Forms {
                 && this.GetTabImageRect(index).Contains(this.MousePosition)) {
                 this.OnTabImageClick(new TabControlEventArgs(this.TabPages[index], index, TabControlAction.Selected));
             }
+            if (index > -1) SelectedIndex = index;
             //	Fire the base event
-            base.OnMouseClick(e);
+            base.OnMouseClick(ev);
+        }
+
+        private MouseEventArgs getAdjustedMouseEventArgs(MouseEventArgs e) {
+            if (!usingControlPanel()) return e;
+            return new MouseEventArgs(e.Button, e.Clicks, e.X - _TabOffset, e.Y, e.Delta);
+        }
+
+        private  bool usingControlPanel() {
+            if (Multiline) return false;
+
+            switch (this.Alignment) {
+                case TabAlignment.Top:
+                case TabAlignment.Bottom:
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         protected virtual void OnTabImageClick(TabControlEventArgs e) {
@@ -775,6 +794,8 @@ namespace TradeWright.UI.Forms {
             //	to mess up, which is why we use this .Net 1.1 buffering technique.
 
             //	Buffer code from Gil. Schmidt http://www.codeproject.com/KB/graphics/DoubleBuffering.aspx
+
+            if (usingControlPanel()) mousePosition = new Point(mousePosition.X - _TabOffset, mousePosition.Y);
 
             if (this.Width > 0 && this.Height > 0) {
                 if (this._BackImage == null) {
