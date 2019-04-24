@@ -112,6 +112,8 @@ namespace TradeWright.UI.Forms {
 
         private bool _SuspendDrawing;
 
+        private int _TabOffset;
+
         #endregion
 
         #region Public properties
@@ -127,6 +129,10 @@ namespace TradeWright.UI.Forms {
             }
             set {
                 this._StyleProvider = value;
+                if (ControlPanel != null) {
+                    SetControlPanelSize();
+                    SetControlPanelLocation();
+                }
             }
         }
 
@@ -137,6 +143,10 @@ namespace TradeWright.UI.Forms {
                 if (this._Style != value) {
                     this._Style = value;
                     this._StyleProvider = TabStyleProvider.CreateProvider(this);
+                    if (ControlPanel != null) {
+                        SetControlPanelSize();
+                        SetControlPanelLocation();
+                    }
                 }
             }
         }
@@ -159,6 +169,8 @@ namespace TradeWright.UI.Forms {
             }
             set {
                 base.Multiline = value;
+                SetControlPanelSize();
+                SetControlPanelLocation();
             }
         }
 
@@ -192,24 +204,6 @@ namespace TradeWright.UI.Forms {
             }
         }
 
-        [Category("Appearance")]
-        public new TabAlignment Alignment {
-            get { return base.Alignment; }
-            set {
-                base.Alignment = value;
-                switch (value) {
-                    case TabAlignment.Top:
-                    case TabAlignment.Bottom:
-                        this.Multiline = false;
-                        break;
-                    case TabAlignment.Left:
-                    case TabAlignment.Right:
-                        this.Multiline = true;
-                        break;
-                }
-            }
-        }
-
         //	Hide the Appearance attribute so it can not be changed
         //	We don't want it as we are doing all the painting.
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -225,6 +219,8 @@ namespace TradeWright.UI.Forms {
                 base.Appearance = TabAppearance.Normal;
             }
         }
+
+        public Panel ControlPanel { get; private set; }
 
         public override Rectangle DisplayRectangle {
             get {
@@ -263,6 +259,24 @@ namespace TradeWright.UI.Forms {
             }
         }
 
+        public int TabOffset {
+            get {
+                return _TabOffset;
+            }
+            set {
+                if (value < 0) throw new ArgumentException($"{nameof(TabOffset)} cannot be negative");
+                _TabOffset = value;
+                if (ControlPanel != null) {
+                    SetControlPanelSize();
+                    SetControlPanelLocation();
+                }
+            }
+        }
+
+        #endregion
+
+        #region	Public methods
+
         [System.Diagnostics.DebuggerStepThrough()]
         public int GetActiveIndex(Point mousePosition) {
             NativeMethods.TCHITTESTINFO hitTestInfo = new NativeMethods.TCHITTESTINFO(mousePosition);
@@ -287,9 +301,22 @@ namespace TradeWright.UI.Forms {
             }
         }
 
-        #endregion
-
-        #region	Public methods
+        public new Rectangle GetTabRect(int index)
+        {
+            var rect = base.GetTabRect(index);
+            if (!Multiline) {
+                switch (this.Alignment) {
+                    case TabAlignment.Top:
+                    case TabAlignment.Bottom:
+                        rect.Offset(_TabOffset + 2, 0);
+                        break;
+                    case TabAlignment.Left:
+                    case TabAlignment.Right:
+                        break;
+                }
+            }
+            return rect;
+        }
 
         public void HideTab(TabPage page) {
             if (page != null && this.TabPages.Contains(page)) {
@@ -467,6 +494,18 @@ namespace TradeWright.UI.Forms {
 
         #region	Base class event processing
 
+        protected override void OnControlAdded(ControlEventArgs e) {
+            base.OnControlAdded(e);
+            SetControlPanelSize();
+            SetControlPanelLocation();
+        }
+
+        protected override void OnControlRemoved(ControlEventArgs e) {
+            base.OnControlRemoved(e);
+            SetControlPanelSize();
+            SetControlPanelLocation();
+        }
+
         protected override void OnFontChanged(EventArgs e) {
             //IntPtr hFont = this.Font.ToHfont();
             //NativeMethods.SendMessage(this.Handle, NativeMethods.WM_SETFONT, hFont, (IntPtr)(-1));
@@ -520,6 +559,8 @@ namespace TradeWright.UI.Forms {
             //var start = DateTime.Now;
             CreateGraphicsBuffers();
             base.OnResize(e);
+            SetControlPanelLocation();
+            SetControlPanelSize();
             //System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + " TabControl " + this.GetHashCode() + " resized: " + DateTime.Now.Subtract(start).TotalMilliseconds + "ms; size: " + this.Size.ToString() + " location: " + this.Location.ToString());
         }
 
@@ -585,6 +626,33 @@ namespace TradeWright.UI.Forms {
 
         protected override void OnSelectedIndexChanged(EventArgs e) {
             base.OnSelectedIndexChanged(e);
+        }
+
+        protected override void OnLocationChanged(EventArgs e) {
+            if (ControlPanel != null && Parent != null) {
+                SetControlPanelLocation();
+            }
+            base.OnLocationChanged(e);
+        }
+
+        protected override void OnParentChanged(EventArgs e) {
+            if (ControlPanel == null) {
+                ControlPanel = new Panel();
+                ControlPanel.BackColor = Color.Red; // Color.Transparent;
+                SetControlPanelSize();
+            }
+
+            if (Parent == null) {
+                ControlPanel.Visible = false;
+            }
+            else {
+                ControlPanel.Parent = Parent;
+                SetControlPanelLocation();
+                Parent.Controls.SetChildIndex(ControlPanel, 0);
+                ControlPanel.Visible = true;
+            }
+
+            base.OnParentChanged(e);
         }
 
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
@@ -1561,6 +1629,45 @@ namespace TradeWright.UI.Forms {
             WndProc(ref message);
 
             return message.Result;
+        }
+
+        private void SetControlPanelLocation() {
+            if (ControlPanel == null) return;
+            if (Multiline) {
+                ControlPanel.Location = new Point(0, 0);
+                return;
+            }
+
+            switch (this.Alignment) {
+                case TabAlignment.Top:
+                    ControlPanel.Location = new Point(Location.X + 4, Location.Y + 2);
+                    break;
+                case TabAlignment.Bottom:
+                    ControlPanel.Location = new Point(Location.X + 4, Location.Y - 1 + (TabPages.Count != 0 ? GetTabRect(0).Top : (Bottom - 21)));
+                    break;
+                default:
+                    ControlPanel.Location = new Point(0, 0);
+                    break;
+            }
+        }
+
+        private void SetControlPanelSize() {
+            if (ControlPanel == null) return;
+            if (Multiline) {
+                ControlPanel.Size = new Size(0, 0);
+                return;
+            }
+
+            switch (this.Alignment) {
+                case TabAlignment.Top:
+                case TabAlignment.Bottom:
+                    ControlPanel.Size = new System.Drawing.Size(_TabOffset, TabPages.Count != 0 ? RowCount * GetTabRect(0).Height + 2 : 21);
+                    break;
+                case TabAlignment.Left:
+                case TabAlignment.Right:
+                    ControlPanel.Size = new Size(0, 0);
+                    break;
+            }
         }
 
         #endregion
