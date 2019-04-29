@@ -114,6 +114,15 @@ namespace TradeWright.UI.Forms {
 
         private int _TabOffset;
 
+        // index of the tab that the mouse is currently in
+        private int _CurrentTabIndex;
+
+        // this is the actual selected tab index corresponding to the 
+        // adjusted mouse position (ie taking account of _TabOffset)
+        private int _SelectedTabIndex;
+
+        private bool _SettingIndexByProgram;
+
         #endregion
 
         #region Public properties
@@ -130,6 +139,7 @@ namespace TradeWright.UI.Forms {
             set {
                 this._StyleProvider = value;
                 if (ControlPanel != null) {
+                    SetControlPanelColor();
                     SetControlPanelSize();
                     SetControlPanelLocation();
                 }
@@ -144,6 +154,7 @@ namespace TradeWright.UI.Forms {
                     this._Style = value;
                     this._StyleProvider = TabStyleProvider.CreateProvider(this);
                     if (ControlPanel != null) {
+                        SetControlPanelColor();
                         SetControlPanelSize();
                         SetControlPanelLocation();
                     }
@@ -259,6 +270,17 @@ namespace TradeWright.UI.Forms {
             }
         }
 
+        public new int SelectedIndex {
+            get {
+                return _SelectedTabIndex;
+            }
+            set {
+                System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} SelectedIndex(set)");
+                _SettingIndexByProgram = true;
+                base.SelectedIndex = value;
+            }
+        }
+
         public int TabOffset {
             get {
                 return _TabOffset;
@@ -279,6 +301,7 @@ namespace TradeWright.UI.Forms {
 
         [System.Diagnostics.DebuggerStepThrough()]
         public int GetActiveIndex(Point mousePosition) {
+            if (usingControlPanel()) mousePosition = new Point(mousePosition.X - _TabOffset, mousePosition.Y);
             NativeMethods.TCHITTESTINFO hitTestInfo = new NativeMethods.TCHITTESTINFO(mousePosition);
             int index = SendMessage(NativeMethods.TCM_HITTEST, IntPtr.Zero, NativeMethods.ToIntPtr(hitTestInfo)).ToInt32();
             if (index == -1) {
@@ -304,17 +327,10 @@ namespace TradeWright.UI.Forms {
         public new Rectangle GetTabRect(int index)
         {
             var rect = base.GetTabRect(index);
-            if (!Multiline) {
-                switch (this.Alignment) {
-                    case TabAlignment.Top:
-                    case TabAlignment.Bottom:
-                        rect.Offset(_TabOffset + 2, 0);
-                        break;
-                    case TabAlignment.Left:
-                    case TabAlignment.Right:
-                        break;
-                }
+            if (usingControlPanel()) {
+                rect.Offset(_TabOffset, 0);
             }
+            rect.Offset(2+_StyleProvider.Overlap + (int)(_StyleProvider.SelectedTabIsLarger ? 1 : 0), 0);
             return rect;
         }
 
@@ -402,13 +418,14 @@ namespace TradeWright.UI.Forms {
         #region Drag 'n' Drop
 
         protected override void OnMouseDown(MouseEventArgs e) {
-            var mousePosition = new Point(e.X, e.Y);
-            int index = this.GetActiveIndex(mousePosition);
-            if (!this.DesignMode && index > -1 && this._StyleProvider.ShowTabCloser && this.GetTabCloserButtonRect(index).Contains(mousePosition)) {
+            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} OnMouseDown");
+            var mousePos = MousePosition;
+            int index = this.GetActiveIndex(mousePos);
+            if (!this.DesignMode && index > -1 && this._StyleProvider.ShowTabCloser && this.GetTabCloserButtonRect(index).Contains(mousePos)) {
 
                 //	If we are clicking on a closer then remove the tab instead of raising the standard mouse down event
                 //	But raise the tab closing event first
-                TabPage tab = this.GetActiveTab(mousePosition);
+                TabPage tab = this.GetActiveTab(mousePos);
                 TabControlCancelEventArgs args = new TabControlCancelEventArgs(tab, index, false, TabControlAction.Deselecting);
                 this.OnTabClosing(args);
             } else {
@@ -420,6 +437,7 @@ namespace TradeWright.UI.Forms {
         }
 
         protected override void OnMouseUp(MouseEventArgs e) {
+            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} OnMouseUp");
             base.OnMouseUp(e);
             if (this.AllowDrop) {
                 this._dragStartPosition = Point.Empty;
@@ -435,11 +453,12 @@ namespace TradeWright.UI.Forms {
                 this.Cursor = Cursors.Arrow;
                 dragTab.Cursor = Cursors.Arrow;
 
-                if (this.GetActiveTab(new Point(drgevent.X,drgevent.Y)) == dragTab) {
+                var mousePosition = new Point(drgevent.X, drgevent.Y);
+                if (this.GetActiveTab(mousePosition) == dragTab) {
                     return;
                 }
 
-                int insertPoint = this.GetActiveIndex(new Point(drgevent.X, drgevent.Y));
+                int insertPoint = this.GetActiveIndex(mousePosition);
                 if (insertPoint < 0) return;
 
                 SuspendDrawing();
@@ -625,7 +644,12 @@ namespace TradeWright.UI.Forms {
         }
 
         protected override void OnSelectedIndexChanged(EventArgs e) {
-            base.OnSelectedIndexChanged(e);
+            if (_SettingIndexByProgram) {
+                _SettingIndexByProgram = false;
+                _SelectedTabIndex = base.SelectedIndex;
+                System.Diagnostics.Debug.Print($"{DateTime.Now.ToString()} OnSelectedIndexChanged (by program): index={_SelectedTabIndex}");
+                base.OnSelectedIndexChanged(e);
+            }
         }
 
         protected override void OnLocationChanged(EventArgs e) {
@@ -638,20 +662,19 @@ namespace TradeWright.UI.Forms {
         protected override void OnParentChanged(EventArgs e) {
             if (ControlPanel == null) {
                 ControlPanel = new Panel();
-                ControlPanel.BackColor = Color.Red; // Color.Transparent;
+                ControlPanel.BackColor = _StyleProvider.PageBackgroundColorUnselected;
+                SetControlPanelColor();
                 SetControlPanelSize();
             }
 
             if (Parent == null) {
                 ControlPanel.Visible = false;
-            }
-            else {
+            } else {
                 ControlPanel.Parent = Parent;
                 SetControlPanelLocation();
                 Parent.Controls.SetChildIndex(ControlPanel, 0);
                 ControlPanel.Visible = true;
             }
-
             base.OnParentChanged(e);
         }
 
@@ -673,9 +696,14 @@ namespace TradeWright.UI.Forms {
             }
         }
 
+        protected override void OnClick(EventArgs e) {
+            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} OnClick");
+            base.OnClick(e);
+        }
+
         protected override void OnMouseClick(MouseEventArgs e) {
-            var ev = getAdjustedMouseEventArgs(e);
-            int index = this.GetActiveIndex(new Point(ev.X, ev.Y));
+            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} OnMouseClick");
+            int index = this.GetActiveIndex(MousePosition);
 
             //	If we are clicking on an image then raise the ImageClicked event before raising the standard mouse click event
             //	if there if a handler.
@@ -686,7 +714,7 @@ namespace TradeWright.UI.Forms {
             }
             if (index > -1) SelectedIndex = index;
             //	Fire the base event
-            base.OnMouseClick(ev);
+            base.OnMouseClick(e);
         }
 
         private MouseEventArgs getAdjustedMouseEventArgs(MouseEventArgs e) {
@@ -695,7 +723,7 @@ namespace TradeWright.UI.Forms {
         }
 
         private  bool usingControlPanel() {
-            if (Multiline) return false;
+            if (Multiline || _TabOffset == 0) return false;
 
             switch (this.Alignment) {
                 case TabAlignment.Top:
@@ -719,13 +747,12 @@ namespace TradeWright.UI.Forms {
             if (e.Cancel)
                 return;
 
-            var selectedIndex = this.SelectedIndex;
             this.TabPages.Remove(e.TabPage);
             e.TabPage.Dispose();
-            if (selectedIndex == this.TabPages.Count) {
-                this.SelectedIndex = selectedIndex - 1;
+            if (_SelectedTabIndex == this.TabPages.Count) {
+                this.SelectedIndex = _SelectedTabIndex - 1;
             } else {
-                this.SelectedIndex = selectedIndex;
+                this.SelectedIndex = _SelectedTabIndex;
             }
 
             OnTabClosed(new TabControlEventArgs(e.TabPage, e.TabPageIndex, e.Action));
@@ -746,11 +773,18 @@ namespace TradeWright.UI.Forms {
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
             var mousePos = this.MousePosition;
-            
+
+            var index = GetActiveIndex(mousePos);
+            var needsRepainting = false;
+
+            if (index != _CurrentTabIndex) {
+                System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} OnMouseMove: index was {_CurrentTabIndex} is now {index}");
+                _CurrentTabIndex = index;
+                needsRepainting = true;
+            }
             if (_PrevTabCloserButtonPath != null && _PrevTabCloserButtonPath.IsVisible(mousePos)) {
                 // mouse is still in highlighted tab closer
             } else {
-                var needsRepainting = false;
                 if (_PrevTabCloserButtonPath != null) {
                     _PrevTabCloserButtonPath.Dispose();
                     _PrevTabCloserButtonPath = null;
@@ -758,7 +792,10 @@ namespace TradeWright.UI.Forms {
                 }
                 _PrevTabCloserButtonPath = GetTabCloserButtonPathAtPosition(mousePos);
                 if (_PrevTabCloserButtonPath != null) needsRepainting = true;
-                if (needsRepainting) CustomPaint(mousePos);
+            }
+            if (needsRepainting) {
+                System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} OnMouseMove: needs repainting");
+                Invalidate();   // CustomPaint(mousePos);
             }
 
             //	Initialise Drag Drop
@@ -780,10 +817,23 @@ namespace TradeWright.UI.Forms {
             //  event args only covers those areas).
 
             //  So we create a new Graphics object rather than use the one in the event args, to avoid the clipping.
-            var start = DateTime.Now;
-            var posn = this.MousePosition;
-            this.CustomPaint(posn);
-            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + " TabControl " + this.GetHashCode() + " painted: " + DateTime.Now.Subtract(start).TotalMilliseconds + "ms; size: " + this.Size.ToString() + " location: " + this.Location.ToString() + " clip: " + e.ClipRectangle.ToString());
+
+            var mousePosition = this.MousePosition;
+            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} OnPaint MpusePosition={mousePosition}");
+
+            var index = base.SelectedIndex;
+            if (index != _SelectedTabIndex) {
+                // the base TabControl thinks that another tab has been selected, and
+                // this is presumably the OnPaint that gets fired before the corresponding
+                // OnSelectedIndexChanged and OnMouseDown events. So we need to make
+                // sure the actual selected tab is recorded
+                var actualIndex = GetActiveIndex(mousePosition);
+                SelectedIndex = actualIndex;
+                _SelectedTabIndex = actualIndex;
+                return;
+            }
+
+            this.CustomPaint(mousePosition);
         }
 
         private void CustomPaint(Point mousePosition) {
@@ -795,104 +845,106 @@ namespace TradeWright.UI.Forms {
 
             //	Buffer code from Gil. Schmidt http://www.codeproject.com/KB/graphics/DoubleBuffering.aspx
 
-            if (usingControlPanel()) mousePosition = new Point(mousePosition.X - _TabOffset, mousePosition.Y);
+            if (this.Width == 0 || this.Height == 0) return;
 
-            if (this.Width > 0 && this.Height > 0) {
-                if (this._BackImage == null) {
-                    //	Cached Background Image
-                    this._BackImage = new Bitmap(this.Width, this.Height);
-                    Graphics backGraphics = Graphics.FromImage(this._BackImage);
-                    backGraphics.Clear(Color.Transparent);
-                    this.PaintTransparentBackground(backGraphics, this.ClientRectangle);
+            var start = DateTime.Now;
+
+            if (this._BackImage == null) {
+                //	Cached Background Image
+                this._BackImage = new Bitmap(this.Width, this.Height);
+                Graphics backGraphics = Graphics.FromImage(this._BackImage);
+                backGraphics.Clear(Color.Transparent);
+                this.PaintTransparentBackground(backGraphics, this.ClientRectangle);
+            }
+
+            this._BackBufferGraphics.Clear(Color.Transparent);
+            this._BackBufferGraphics.DrawImageUnscaled(this._BackImage, 0, 0);
+
+            if (this.EffectiveRightToLeft) {
+                var m = new Matrix();
+                m.Translate(this._TabBuffer.Width, 0f);
+                m.Scale(-1f, 1f);
+                this._TabBufferGraphics.Transform = m;
+                m.Dispose();
+            }
+
+            this._TabBufferGraphics.Clear(Color.Transparent);
+
+            if (this.TabCount > 0) {
+
+                //	When top or bottom and scrollable we need to clip the sides from painting the tabs.
+                //	Left and right are always multiline.
+                if (this.Alignment <= TabAlignment.Bottom && !this.Multiline) {
+                    var rect = this.ClientRectangle;
+                    this._TabBufferGraphics.Clip = new Region(new RectangleF(rect.X + 4 - this._StyleProvider.TabPageMargin.Left,
+                                                                                rect.Y,
+                                                                                rect.Width - 8 + this._StyleProvider.TabPageMargin.Left + this._StyleProvider.TabPageMargin.Right,
+                                                                                rect.Height));
                 }
 
-                this._BackBufferGraphics.Clear(Color.Transparent);
-                this._BackBufferGraphics.DrawImageUnscaled(this._BackImage, 0, 0);
-
-                if (this.EffectiveRightToLeft) {
-                    var m = new Matrix();
-                    m.Translate(this._TabBuffer.Width, 0f);
-                    m.Scale(-1f, 1f);
-                    this._TabBufferGraphics.Transform = m;
-                    m.Dispose();
-                }
-
-                this._TabBufferGraphics.Clear(Color.Transparent);
-
-                if (this.TabCount > 0) {
-
-                    //	When top or bottom and scrollable we need to clip the sides from painting the tabs.
-                    //	Left and right are always multiline.
-                    if (this.Alignment <= TabAlignment.Bottom && !this.Multiline) {
-                        var rect = this.ClientRectangle;
-                        this._TabBufferGraphics.Clip = new Region(new RectangleF(rect.X + 4 - this._StyleProvider.TabPageMargin.Left,
-                                                                                    rect.Y,
-                                                                                    rect.Width - 8 + this._StyleProvider.TabPageMargin.Left + this._StyleProvider.TabPageMargin.Right,
-                                                                                    rect.Height));
-                    }
-
-                    //	Draw each tabpage from right to left.  We do it this way to handle
-                    //	the overlap correctly.
-                    if (this.Multiline) {
-                        for (int row = 0; row < this.RowCount; row++) {
-                            for (int index = this.TabCount - 1; index >= 0; index--) {
-                                if (index != this.SelectedIndex && (this.RowCount == 1 || this.GetTabRow(index) == row)) {
-                                    this.DrawTabPage(index, mousePosition, this._TabBufferGraphics);
-                                }
-                            }
-                        }
-                    } else {
-                        for (int index = this.TabCount - 1; index >= 0; index--) {
-                            if (index != this.SelectedIndex) {
-                                this.DrawTabPage(index, mousePosition, this._TabBufferGraphics);
+                //	Draw each tabpage from right to left.  We do it this way to handle
+                //	the overlap correctly.
+                if (this.Multiline) {
+                    for (int row = 0; row < this.RowCount; row++) {
+                        for (int i = this.TabCount - 1; i >= 0; i--) {
+                            if (i != _SelectedTabIndex && (this.RowCount == 1 || this.GetTabRow(i) == row)) {
+                                this.DrawTabPage(i, mousePosition, this._TabBufferGraphics);
                             }
                         }
                     }
-
-                    //	The selected tab must be drawn last so it appears on top.
-                    if (this.SelectedIndex > -1) {
-                        this.DrawTabPage(this.SelectedIndex, mousePosition, this._TabBufferGraphics);
+                } else {
+                    for (int i = this.TabCount - 1; i >= 0; i--) {
+                        if (i != _SelectedTabIndex) {
+                            this.DrawTabPage(i, mousePosition, this._TabBufferGraphics);
+                        }
                     }
                 }
-                this._TabBufferGraphics.Flush();
 
-                //	Paint the tabs on top of the background
-
-                // Create a new color matrix and set the alpha value to the required opacity
-                ColorMatrix alphaMatrix = new ColorMatrix();
-                alphaMatrix.Matrix00 = alphaMatrix.Matrix11 = alphaMatrix.Matrix22 = alphaMatrix.Matrix44 = 1;
-                alphaMatrix.Matrix33 = this._StyleProvider.Opacity;
-
-                // Create a new image attribute object and set the color matrix to
-                // the one just created
-                using (ImageAttributes alphaAttributes = new ImageAttributes()) {
-
-                    alphaAttributes.SetColorMatrix(alphaMatrix);
-
-                    // Draw the original image with the image attributes specified
-                    this._BackBufferGraphics.DrawImage(this._TabBuffer,
-                                                       new Rectangle(0, 0, this._TabBuffer.Width, this._TabBuffer.Height),
-                                                       0, 0, this._TabBuffer.Width, this._TabBuffer.Height, GraphicsUnit.Pixel,
-                                                       alphaAttributes);
-                }
-
-                this._BackBufferGraphics.Flush();
-
-                //	Now paint this to the screen
-
-
-                //	We want to paint the whole tabstrip and border every time
-                //	so that the hot areas update correctly, along with any overlaps
-
-                //	paint the tabs etc.
-                using (var g = this.CreateGraphics()) {
-                    if (this.EffectiveRightToLeft) {
-                        g.DrawImageUnscaled(this._BackBuffer, -1, 0);
-                    } else {
-                        g.DrawImageUnscaled(this._BackBuffer, 0, 0);
-                    }
+                //	The selected tab must be drawn last so it appears on top.
+                if (_SelectedTabIndex > -1) {
+                    this.DrawTabPage(_SelectedTabIndex, mousePosition, this._TabBufferGraphics);
                 }
             }
+            this._TabBufferGraphics.Flush();
+
+            //	Paint the tabs on top of the background
+
+            // Create a new color matrix and set the alpha value to the required opacity
+            ColorMatrix alphaMatrix = new ColorMatrix();
+            alphaMatrix.Matrix00 = alphaMatrix.Matrix11 = alphaMatrix.Matrix22 = alphaMatrix.Matrix44 = 1;
+            alphaMatrix.Matrix33 = this._StyleProvider.Opacity;
+
+            // Create a new image attribute object and set the color matrix to
+            // the one just created
+            using (ImageAttributes alphaAttributes = new ImageAttributes()) {
+
+                alphaAttributes.SetColorMatrix(alphaMatrix);
+
+                // Draw the original image with the image attributes specified
+                this._BackBufferGraphics.DrawImage(this._TabBuffer,
+                                                    new Rectangle(0, 0, this._TabBuffer.Width, this._TabBuffer.Height),
+                                                    0, 0, this._TabBuffer.Width, this._TabBuffer.Height, GraphicsUnit.Pixel,
+                                                    alphaAttributes);
+            }
+
+            this._BackBufferGraphics.Flush();
+
+            //	Now paint this to the screen
+
+
+            //	We want to paint the whole tabstrip and border every time
+            //	so that the hot areas update correctly, along with any overlaps
+
+            //	paint the tabs etc.
+            using (var g = this.CreateGraphics()) {
+                if (this.EffectiveRightToLeft) {
+                    g.DrawImageUnscaled(this._BackBuffer, -1, 0);
+                } else {
+                    g.DrawImageUnscaled(this._BackBuffer, 0, 0);
+                }
+            }
+
+            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString()} TabControlExtra {GetHashCode()} painted: {DateTime.Now.Subtract(start).TotalMilliseconds}ms; size: {Size.ToString()}; location: {Location.ToString()}; mousepos: {mousePosition.ToString()}");
         }
 
         protected void PaintTransparentBackground(Graphics graphics, Rectangle clipRect) {
@@ -928,10 +980,11 @@ namespace TradeWright.UI.Forms {
             var baseTabRect = this.GetBaseTabRect(index);
             var pageBounds = this.GetPageBounds(index);
             
-            var tabBounds = this._StyleProvider.GetTabRect(baseTabRect, pageBounds, this.SelectedIndex == index);
+            var tabBounds = this._StyleProvider.GetTabRect(baseTabRect, pageBounds, _SelectedTabIndex == index);
             var tabContentRect = Rectangle.Intersect(baseTabRect, tabBounds);
 
             var state = GetTabState(index, mousePosition);
+            System.Diagnostics.Debug.Print($"Index={index} State={state} TabBounds={tabBounds} BaseTabRect={base.GetTabRect(index)}");
             var isTabEnabled = this.TabPages[index].Enabled;
             var isTabVisible = this._Style != TabStyle.None && this.IsTabVisible(tabBounds, pageBounds);
 
@@ -1345,7 +1398,7 @@ namespace TradeWright.UI.Forms {
         }
 
         public Rectangle GetTabBounds(int index) {
-            return this._StyleProvider.GetTabRect(base.GetTabRect(index), this.GetPageBounds(index), index == this.SelectedIndex);
+            return this._StyleProvider.GetTabRect(base.GetTabRect(index), this.GetPageBounds(index), index == _SelectedTabIndex);
         }
 
         private GraphicsPath GetTabCloserButtonPathAtPosition(Point position) {
@@ -1364,7 +1417,7 @@ namespace TradeWright.UI.Forms {
             var baseTabRect = this.GetTabRect(index);
             var pageBounds = this.GetPageBounds(index);
 
-            var tabBounds = this._StyleProvider.GetTabRect(baseTabRect, pageBounds, this.SelectedIndex == index);
+            var tabBounds = this._StyleProvider.GetTabRect(baseTabRect, pageBounds, _CurrentTabIndex == index);
             var tabContentRect = Rectangle.Intersect(baseTabRect, tabBounds);
             return GetTabCloserButtonRect(tabContentRect, this._StyleProvider.GetTabBorder(tabBounds));
         }
@@ -1412,7 +1465,7 @@ namespace TradeWright.UI.Forms {
         }
 
         private Rectangle GetTabImageRect(int index) {
-            var tabRect = this._StyleProvider.GetTabRect(base.GetTabRect(index), this.GetPageBounds(index), index == this.SelectedIndex);
+            var tabRect = this._StyleProvider.GetTabRect(base.GetTabRect(index), this.GetPageBounds(index), index == _SelectedTabIndex);
             using (GraphicsPath tabBorderPath = this._StyleProvider.GetTabBorder(tabRect)) {
                 return this.GetTabImageRect(tabRect, tabBorderPath);
             }
@@ -1519,7 +1572,7 @@ namespace TradeWright.UI.Forms {
         }
 
         private TabState GetTabState(int index, Point mousePosition) {
-            if (this.SelectedIndex == index) {
+            if (_SelectedTabIndex == index) {
                 if (this.ContainsFocus) {
                     return TabState.Focused;
                 } else {
@@ -1586,12 +1639,14 @@ namespace TradeWright.UI.Forms {
 
         protected internal bool IsTabVisible(Rectangle tabBounds, Rectangle pageBounds) {
             switch (this.Alignment) {
-            case TabAlignment.Top:
-            case TabAlignment.Bottom:
-                return tabBounds.Right > pageBounds.Left + this._StyleProvider.TabPageMargin.Left && tabBounds.Left < pageBounds.Right - this._StyleProvider.TabPageMargin.Right;
-            case TabAlignment.Left:
-            case TabAlignment.Right:
-                return tabBounds.Bottom > pageBounds.Top + this._StyleProvider.TabPageMargin.Top && tabBounds.Top < pageBounds.Bottom - this._StyleProvider.TabPageMargin.Bottom;
+                case TabAlignment.Top:
+                case TabAlignment.Bottom:
+                    if (tabBounds.Left < 0) return false;
+                    return tabBounds.Right > pageBounds.Left + this._StyleProvider.TabPageMargin.Left && tabBounds.Left < pageBounds.Right - this._StyleProvider.TabPageMargin.Right;
+                case TabAlignment.Left:
+                case TabAlignment.Right:
+                    if (tabBounds.Top < 0) return false;
+                    return tabBounds.Bottom > pageBounds.Top + this._StyleProvider.TabPageMargin.Top && tabBounds.Top < pageBounds.Bottom - this._StyleProvider.TabPageMargin.Bottom;
             }
             return false;
         }
@@ -1652,19 +1707,26 @@ namespace TradeWright.UI.Forms {
             return message.Result;
         }
 
+        private void SetControlPanelColor() {
+            if (ControlPanel == null) return;
+            ControlPanel.BackColor = _StyleProvider.PageBackgroundColorUnselected;
+        }
+
         private void SetControlPanelLocation() {
             if (ControlPanel == null) return;
-            if (Multiline) {
+            if (!usingControlPanel()) {
                 ControlPanel.Location = new Point(0, 0);
                 return;
             }
 
             switch (this.Alignment) {
                 case TabAlignment.Top:
-                    ControlPanel.Location = new Point(Location.X + 4, Location.Y + 2);
+                    ControlPanel.Location = new Point(Location.X + 4 - _StyleProvider.TabPageMargin.Left, 
+                                                      Location.Y + 2);
                     break;
                 case TabAlignment.Bottom:
-                    ControlPanel.Location = new Point(Location.X + 4, Location.Y - 1 + (TabPages.Count != 0 ? GetTabRect(0).Top : (Bottom - 21)));
+                    ControlPanel.Location = new Point(Location.X + 4 - _StyleProvider.TabPageMargin.Left, 
+                                                      Location.Y - 3 + (TabPages.Count != 0 ? GetTabRect(0).Top : (Bottom - 21)) + _StyleProvider.TabPageMargin.Bottom);
                     break;
                 default:
                     ControlPanel.Location = new Point(0, 0);
@@ -1674,15 +1736,19 @@ namespace TradeWright.UI.Forms {
 
         private void SetControlPanelSize() {
             if (ControlPanel == null) return;
-            if (Multiline) {
+            if (!usingControlPanel())  {
                 ControlPanel.Size = new Size(0, 0);
                 return;
             }
 
             switch (this.Alignment) {
                 case TabAlignment.Top:
+                    ControlPanel.Size = new Size(_TabOffset + _StyleProvider.TabPageMargin.Right, 
+                                                 (TabPages.Count != 0 ? RowCount * GetTabRect(0).Height + 3 : 21) - _StyleProvider.TabPageMargin.Top);
+                    break;
                 case TabAlignment.Bottom:
-                    ControlPanel.Size = new System.Drawing.Size(_TabOffset, TabPages.Count != 0 ? RowCount * GetTabRect(0).Height + 2 : 21);
+                    ControlPanel.Size = new Size(_TabOffset + _StyleProvider.TabPageMargin.Right, 
+                                                 (TabPages.Count != 0 ? RowCount * GetTabRect(0).Height + 4 : 21) - _StyleProvider.TabPageMargin.Bottom);
                     break;
                 case TabAlignment.Left:
                 case TabAlignment.Right:

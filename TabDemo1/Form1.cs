@@ -28,8 +28,6 @@ namespace TabDemo1
         public Form1() {
             InitializeComponent();
 
-            tabControlExtra1.ControlPanel.BackColor = Color.LightCoral; // Color.Transparent;
-
             tabControlExtra1.ControlPanel.Controls.Add(mMenuStrip);
             mMenuStrip.SuspendLayout();
 
@@ -79,23 +77,59 @@ namespace TabDemo1
 
         private void tabControlExtra1_TabClosed(object sender, TabControlEventArgs e)
         {
-            System.Diagnostics.Debug.Print("TabClosed event");
+            System.Diagnostics.Debug.Print("tabControlExtra1: TabClosed event");
         }
 
         private void tabControlExtra1_TabClosing(object sender, TabControlCancelEventArgs e)
         {
-            System.Diagnostics.Debug.Print("TabClosing event");
+            System.Diagnostics.Debug.Print("tabControlExtra1: TabClosing event");
         }
 
         private void tabControlExtra2_TabClosed(object sender, TabControlEventArgs e)
         {
-            System.Diagnostics.Debug.Print("TabClosed event");
+            System.Diagnostics.Debug.Print("tabControlExtra2: TabClosed event");
         }
 
         private void tabControlExtra2_TabClosing(object sender, TabControlCancelEventArgs e)
         {
-            System.Diagnostics.Debug.Print("TabClosing event - cancelling");
-            e.Cancel = true;
+            System.Diagnostics.Debug.Print("tabControlExtra2: TabClosing event");
+            //e.Cancel = true;
+        }
+
+        private void TabControl1_Click(object sender, EventArgs e) {
+            System.Diagnostics.Debug.Print("TabControl1: Click event");
+        }
+
+        private void TabControl1_DoubleClick(object sender, EventArgs e) {
+            System.Diagnostics.Debug.Print("TabControl1: DoubleClick event");
+        }
+
+        private void TabControl1_MouseClick(object sender, MouseEventArgs e) {
+            System.Diagnostics.Debug.Print("TabControl1: MouseClick event");
+        }
+
+        private void TabControl1_MouseDoubleClick(object sender, MouseEventArgs e) {
+            System.Diagnostics.Debug.Print("TabControl1: MouseDoubleClick event");
+        }
+
+        private void TabControl1_MouseDown(object sender, MouseEventArgs e) {
+            System.Diagnostics.Debug.Print("TabControl1: MouseDown event");
+        }
+
+        private void TabControl1_MouseUp(object sender, MouseEventArgs e) {
+            System.Diagnostics.Debug.Print("TabControl1: MouseUp event");
+        }
+
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e) {
+            System.Diagnostics.Debug.Print("TabControl1: SelectedIndexChanged event");
+        }
+
+        private void TabPage1_Paint(object sender, PaintEventArgs e) {
+            System.Diagnostics.Debug.Print("TabPage1: Paint event");
+        }
+
+        private void TabPage2_Paint(object sender, PaintEventArgs e) {
+            System.Diagnostics.Debug.Print("TabPage2: Paint event");
         }
     }
 }
