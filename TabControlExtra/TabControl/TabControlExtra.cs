@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This code is provided under the Code Project Open Licence (CPOL)
  * See http://www.codeproject.com/info/cpol10.aspx for details
  */
@@ -377,7 +377,7 @@ namespace TradeWright.UI.Forms {
         protected override void OnMouseDown(MouseEventArgs e) {
             var mousePosition = new Point(e.X, e.Y);
             int index = this.GetActiveIndex(mousePosition);
-            if (!this.DesignMode && index > -1 && this._StyleProvider.ShowTabCloser && this.GetTabCloserButtonRect(index).Contains(mousePosition)) {
+            if (!this.DesignMode && index > (this._StyleProvider.CloserIgnoreFirstTabs - 1) && this._StyleProvider.ShowTabCloser && this.GetTabCloserButtonRect(index).Contains(mousePosition)) {
 
                 //	If we are clicking on a closer then remove the tab instead of raising the standard mouse down event
                 //	But raise the tab closing event first
@@ -868,7 +868,7 @@ namespace TradeWright.UI.Forms {
 
                 if (isTabVisible) {
                     //	Paint the tab
-                    this.PaintTab(tabBorder, tabCloserButtonRect, state, graphics, mousePosition);
+                    this.PaintTab(tabBorder, tabCloserButtonRect, state, graphics, mousePosition, index);
 
                     //	Draw any image
                     if (tabImageRect != Rectangle.Empty) this.DrawTabImage(tabImage, tabImageRect, graphics, isTabEnabled);
@@ -884,13 +884,14 @@ namespace TradeWright.UI.Forms {
             }
         }
 
-        private void PaintTab(GraphicsPath tabBorder, Rectangle tabCloserButtonRect, TabState state, Graphics graphics, Point mousePosition) {
+        private void PaintTab(GraphicsPath tabBorder, Rectangle tabCloserButtonRect, TabState state, Graphics graphics, Point mousePosition, int index) {
             this._StyleProvider.PaintTabBackground(tabBorder, state, graphics);
 
             //	Paint a focus indication
             this._StyleProvider.DrawTabFocusIndicator(tabBorder, state, graphics);
             //	Paint the closer
-            this._StyleProvider.DrawTabCloser(tabCloserButtonRect, graphics, state, mousePosition);
+			if (index > (this._StyleProvider.CloserIgnoreFirstTabs - 1))
+				this._StyleProvider.DrawTabCloser(tabCloserButtonRect, graphics, state, mousePosition);
         }
 
         private void DrawTabPageBorder(GraphicsPath path, TabState state, Graphics graphics) {
