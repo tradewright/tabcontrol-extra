@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This code is provided under the Code Project Open Licence (CPOL)
  * See http://www.codeproject.com/info/cpol10.aspx for details
  */
@@ -108,6 +108,7 @@ namespace TradeWright.UI.Forms
 		private bool _FocusTrack;
 		private float _Opacity = 1;
 		private bool _ShowTabCloser;
+		private int _CloserIgnoreFirstTabs;
         private bool _SelectedTabIsLarger;
 
         private BlendStyle _BlendStyle = BlendStyle.Normal;
@@ -393,7 +394,7 @@ namespace TradeWright.UI.Forms
 			}
 		}
 		
-            [Category("Appearance")]
+        [Category("Appearance")]
 		public bool ShowTabCloser {
 			get { return this._ShowTabCloser; }
 			set {
@@ -401,6 +402,12 @@ namespace TradeWright.UI.Forms
 				//	Adjust padding
 				this.Padding = this._Padding;
 			}
+		}
+
+		[Category("Appearance")]
+		public int CloserIgnoreFirstTabs {
+			get { return this._CloserIgnoreFirstTabs; }
+			set { this._CloserIgnoreFirstTabs = value; }
 		}
 
 		[Category("Appearance")]
